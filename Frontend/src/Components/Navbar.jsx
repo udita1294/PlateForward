@@ -6,7 +6,7 @@ const Navbar = () => {
       <nav className="flex items-center justify-between px-8 py-4 border-b border-gray-700">
         <div className="flex items-center space-x-2">
           <span className="text-2xl">🍴</span>
-          <h1 className="text-xl font-bold">FoodShare</h1>
+          <h1 className="text-xl font-bold">PlateForward</h1>
         </div>
 
         <div className="flex items-center space-x-6">
