@@ -1,14 +1,4 @@
 import React from 'react'
-import { motion } from "framer-motion";
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 40 },
-  visible: (i) => ({
-    opacity: 1,
-    y: 0,
-    transition: { delay: i * 0.3, duration: 0.8 }
-  }),
-};
 
 const Cards = () => {
   const cardData = [
@@ -20,14 +10,9 @@ const Cards = () => {
   return (
     <div className='mt-10 flex flex-wrap items-center justify-center gap-10'>
       {cardData.map((card, i) => (
-        <motion.div
+        <div
           key={i}
           className="bg-[#cbf3cd] rounded-lg shadow-lg p-6 max-w-sm text-center text-[#333333] hover:shadow-2xl transition"
-          variants={cardVariants}
-          initial="hidden"
-          whileInView="visible"
-          custom={i}
-          whileHover={{ scale: 1.05 }}
         >
           <div className="flex justify-center mb-4">
             <div className="bg-[#62594b] rounded-md p-3">
@@ -36,7 +21,7 @@ const Cards = () => {
           </div>
           <h3 className="text-lg font-semibold mb-2">{card.title}</h3>
           <p className="text-[#333333] text-sm font-medium leading-relaxed">{card.desc}</p>
-        </motion.div>
+        </div>
       ))}
     </div>
   )
