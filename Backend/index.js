@@ -3,6 +3,7 @@ import 'dotenv/config';
 import cors from 'cors';
 import mongoose from 'mongoose';
 import connectDB from './config/db.js';
+import userRoutes from "./Routes/UserRoute.js";
 
 
 const app = express();
@@ -13,9 +14,8 @@ app.use(cors());
 await connectDB();
 
 
-app.get('/', (req, res) => {
-    res.send('Hello World!');
-});
+
+app.use("/api/user", userRoutes);
 
 const PORT = process.env.PORT || 3000;
 
