@@ -5,7 +5,6 @@ import mongoose from 'mongoose';
 import connectDB from './config/db.js';
 import userRoutes from "./Routes/UserRoute.js";
 
-
 const app = express();
 
 app.use(express.json());
