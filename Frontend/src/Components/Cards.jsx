@@ -22,7 +22,7 @@ const Cards = () => {
       {cardData.map((card, i) => (
         <motion.div
           key={i}
-          className="bg-[#f9bd63] rounded-lg shadow-lg p-6 max-w-sm text-center text-[#333333] hover:shadow-2xl transition"
+          className="bg-[#cbf3cd] rounded-lg shadow-lg p-6 max-w-sm text-center text-[#333333] hover:shadow-2xl transition"
           variants={cardVariants}
           initial="hidden"
           whileInView="visible"
@@ -30,7 +30,7 @@ const Cards = () => {
           whileHover={{ scale: 1.05 }}
         >
           <div className="flex justify-center mb-4">
-            <div className="bg-[#2d2420] rounded-md p-3">
+            <div className="bg-[#62594b] rounded-md p-3">
               <span className="text-2xl text-[#c99b84]">{card.icon}</span>
             </div>
           </div>
