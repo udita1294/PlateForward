@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link, useNavigate } from 'react-router-dom'; 
 
 const Navbar = () => {
   return (
@@ -19,9 +20,9 @@ const Navbar = () => {
           <a href="#impact" className="hover:text-gray-500">
             Impact
           </a>
-          <button className="flex items-center space-x-1 bg-[#FF9800] text-black px-4 py-2 rounded-md hover:bg-[#b9866e] transition">
-            <span>Sign Out</span>
-          </button>
+          <Link to='/register'><button className="flex items-center space-x-1 bg-[#FF9800] text-black px-4 py-2 rounded-md hover:bg-[#f78a58] transition cursor-pointer">
+            <span>Sign In</span>
+          </button></Link>
         </div>
       </nav>
     </div>

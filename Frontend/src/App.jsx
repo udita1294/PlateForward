@@ -1,7 +1,9 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import Hero from "./Components/Hero";
-import ImpactSection from "./Components/ImpactSection";
+import Home from "./Pages/Home";
+import Signup from "./Pages/signup";
+import Navbar from "./Components/Navbar";
+import Login from "./Pages/Login";
 
 const App = () => {
 
@@ -9,8 +11,13 @@ const App = () => {
 
   return (
     <div>
-     <Hero />
-     <ImpactSection />
+      
+     <Routes >
+      <Route path="/" element={<Home />} />
+      <Route path="/register" element={<Signup />} />
+      <Route path="/login" element={<Login />} />
+
+     </Routes>
     </div>
   );
 };
