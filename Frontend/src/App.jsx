@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Home from "./Pages/Home";
-import Signup from "./Pages/signup";
+import Signup from "./Pages/Signup";
 import Navbar from "./Components/Navbar";
 import Login from "./Pages/Login";
 
