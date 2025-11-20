@@ -2,14 +2,7 @@ import Donation from "../models/donationModel.js";
 
 export const createDonation = async (req, res) => {
   try {
-    const {
-      title,
-      description,
-      foodType,
-      quantity,
-      pickupAddress,
-      pickupTime
-    } = req.body;
+    const {title,description,foodType,quantity,pickupAddress,pickupTime} = req.body;
 
     const newDonation = await Donation.create({
       donorId: req.user.id,
