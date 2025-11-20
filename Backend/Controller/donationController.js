@@ -12,7 +12,7 @@ export const createDonation = async (req, res) => {
       quantity,
       pickupAddress,
       pickupTime,
-      imageUrl: req.file?.location || null
+      imageUrl: req.file?.location || null  // Cloudinary URL
     });
 
     res.status(201).json({ success: true, donation: newDonation });
