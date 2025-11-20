@@ -1,4 +1,4 @@
-**⭐PlateForward — Surplus Food Donation Network**
+#**⭐PlateForward — Surplus Food Donation Network**
 
 PlateForward is a MERN-stack platform designed to reduce surplus food waste by connecting donors, receivers, and volunteers. Users can post donations, request food, and assist in deliveries to ensure excess food reaches people in need.
 
@@ -93,49 +93,3 @@ Vercel (Frontend hosting)
 Render  (Backend hosting)
 
 Cloudinary (Image storage)
-
-**📁 Project Structure**
-**🗄️ Backend**
-backend/
-│── config/
-│   └── cloudinary.js
-│── controllers/
-│── middlewares/
-│── models/
-│── routes/
-└── server.js
-
-**💻 Frontend**
-frontend/
-│── src/
-│   ├── Components/
-│   ├── Pages/
-│   ├── Context/
-│   ├── App.jsx
-│   └── main.jsx
-└── package.json
-
-**⚡ Installation**
-**📥 Clone the Repository**
-git clone https://github.com/yourusername/plateforward.git
-cd plateforward
-
-🌐 Backend Setup
-📦 Install Dependencies
-cd backend
-npm install
-
-⚙️ Setup Environment Variables (.env)
-MONGO_URI=your_mongo_uri
-JWT_SECRET=your_jwt_secret
-CLOUDINARY_CLOUD_NAME=xxxx
-CLOUDINARY_API_KEY=xxxx
-CLOUDINARY_API_SECRET=xxxx
-
-▶️ Start Backend
-npm run dev
-
-💻 Frontend Setup
-cd frontend
-npm install
-npm run dev
