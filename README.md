@@ -1,59 +1,68 @@
-PlateForward — Surplus Food Donation Network
+**⭐PlateForward — Surplus Food Donation Network**
 
-A MERN-stack platform connecting food donors, receivers, and volunteers to reduce food waste.
+PlateForward is a MERN-stack platform designed to reduce surplus food waste by connecting donors, receivers, and volunteers. Users can post donations, request food, and assist in deliveries to ensure excess food reaches people in need.
 
-🚀 Overview
+**🚀 Overview**
 
-PlateForward is a full-stack web application designed to reduce surplus food waste by connecting donors with receivers (NGOs, shelters, individuals) and volunteers who help with pickup/delivery.
-The platform enables users to post food donations, browse available donations, track pickups, and streamline the process of redistributing surplus food.
+PlateForward provides a modern, digital workflow for surplus food redistribution:
 
-🧩 Features
-👤 User Roles
+Donor → Creates and manages donation posts
 
-Donor – Post food donations (with images), manage their listings
+Receiver → Views and requests available donations
 
-Receiver – View available donations, request for food
+Volunteer → Helps with pickup and delivery
 
-Volunteer – Support pickups and deliveries
+Admin (Future) → Manages users and system data
 
-Admin – Manage users & monitor system activity (optional future)
+**🧩 Features**
+**👤 User Roles**
 
-🍲 Donation Module
+Donor dashboard
+
+Receiver dashboard
+
+Volunteer workflow
+
+Admin panel (future)
+
+**🍲 Donation Module**
 
 Create donation posts
 
 Upload images using Multer + Cloudinary
 
-Track donation status (available / claimed / completed)
+Track donation status (Available → Claimed → Completed)
 
-View donor-specific donation history
+View donation history
 
-🔐 Authentication
+**🔐 Authentication**
 
 JWT-based authentication
 
+Secure login & signup
+
 Role-based access control
 
-Secure user signup/login
+Password encryption
 
-🌐 Frontend
+**🎨 Frontend**
 
-React + Context API
+React with Context API
 
-Responsive dashboard for each user role
+Axios for API integration
 
-Real-time form validation and API integration
+Responsive UI design
 
-🗄 Backend
+**🛠 Backend**
 
 Node.js + Express
 
-MongoDB with Mongoose
+MongoDB + Mongoose
 
-REST API structure (donations, users, auth, uploads)
+Multer + Cloudinary file uploads
 
-🛠️ Tech Stack
-Frontend
+**🛠️ Tech Stack**
+**🎯 Frontend**
 
 React
 
@@ -61,69 +70,69 @@ React Router
 
 Context API
 
-Axios
-
 TailwindCSS / Custom CSS
 
-Backend
+Axios
 
-Node.js + Express
+**⚙️ Backend**
+
+Node.js
+
+Express
 
 MongoDB + Mongoose
 
-JWT Authentication
+JWT Auth
 
-Multer + Cloudinary for image upload
+Multer + Cloudinary
 
-Tools & Deployment
+**🧰 Tools**
 
-Vercel for frontend (optional)
+Vercel (Frontend hosting)
 
-Railway / Render / Vercel Serverless for backend
+Render  (Backend hosting)
 
-Cloudinary for storing images
+Cloudinary (Image storage)
 
-📁 Project Structure
-Backend (Node + Express)
-/backend
-│── /config
+**📁 Project Structure**
+**🗄️ Backend**
+backend/
+│── config/
 │   └── cloudinary.js
-│── /controllers
-│── /middlewares
-│── /models
-│── /routes
-│── server.js
+│── controllers/
+│── middlewares/
+│── models/
+│── routes/
+└── server.js
 
-Frontend (React)
-/frontend
-│── /src
-│   ├── /Components
-│   ├── /Pages
-│   ├── /Context
+**💻 Frontend**
+frontend/
+│── src/
+│   ├── Components/
+│   ├── Pages/
+│   ├── Context/
 │   ├── App.jsx
-│   ├── main.jsx
-│── package.json
+│   └── main.jsx
+└── package.json
 
-🔧 Installation & Setup
-1. Clone the repo
+**⚡ Installation**
+**📥 Clone the Repository**
 git clone https://github.com/yourusername/plateforward.git
 cd plateforward
 
 🌐 Backend Setup
+📦 Install Dependencies
 cd backend
 npm install
 
-Environment Variables
-
-Create a .env file:
-
-MONGO_URI=your_mongodb_uri
+⚙️ Setup Environment Variables (.env)
+MONGO_URI=your_mongo_uri
 JWT_SECRET=your_jwt_secret
 CLOUDINARY_CLOUD_NAME=xxxx
 CLOUDINARY_API_KEY=xxxx
 CLOUDINARY_API_SECRET=xxxx
 
-Start backend
+▶️ Start Backend
 npm run dev
 
 💻 Frontend Setup
