@@ -1,8 +1,8 @@
-#**⭐PlateForward — Surplus Food Donation Network**
+# **⭐PlateForward — Surplus Food Donation Network**
 
 PlateForward is a MERN-stack platform designed to reduce surplus food waste by connecting donors, receivers, and volunteers. Users can post donations, request food, and assist in deliveries to ensure excess food reaches people in need.
 
-**🚀 Overview**
+## **🚀 Overview**
 
 PlateForward provides a modern, digital workflow for surplus food redistribution:
 
@@ -14,8 +14,8 @@ Volunteer → Helps with pickup and delivery
 
 Admin (Future) → Manages users and system data
 
-**🧩 Features**
-**👤 User Roles**
+## **🧩 Features**
+### **👤 User Roles**
 
 Donor dashboard
 
@@ -25,7 +25,7 @@ Volunteer workflow
 
 Admin panel (future)
 
-**🍲 Donation Module**
+### **🍲 Donation Module**
 
 Create donation posts
 
@@ -35,7 +35,7 @@ Track donation status (Available → Claimed → Completed)
 
 View donation history
 
-**🔐 Authentication**
+### **🔐 Authentication**
 
 JWT-based authentication
 
@@ -45,7 +45,7 @@ Role-based access control
 
 Password encryption
 
-**🎨 Frontend**
+## **🎨 Frontend**
 
 React with Context API
 
@@ -53,7 +53,7 @@ Axios for API integration
 
 Responsive UI design
 
-**🛠 Backend**
+## **🛠 Backend**
 
 Node.js + Express
 
@@ -61,8 +61,8 @@ MongoDB + Mongoose
 
 Multer + Cloudinary file uploads
 
-**🛠️ Tech Stack**
-**🎯 Frontend**
+## **🛠️ Tech Stack**
+# **🎯 Frontend**
 
 React
 
@@ -74,7 +74,7 @@ TailwindCSS / Custom CSS
 
 Axios
 
-**⚙️ Backend**
+# **⚙️ Backend**
 
 Node.js
 
@@ -86,7 +86,7 @@ JWT Auth
 
 Multer + Cloudinary
 
-**🧰 Tools**
+## **🧰 Tools**
 
 Vercel (Frontend hosting)
 
