@@ -1,4 +1,6 @@
 import { FaLeaf, FaHeart, FaMapMarkerAlt } from "react-icons/fa";
+import { Link, useNavigate } from "react-router-dom";
+
 
 export default function ImpactSection() {
   return (
@@ -53,14 +55,17 @@ export default function ImpactSection() {
           Join thousands of community members who are fighting food waste and hunger
         </p>
         <div className="mt-10 flex flex-wrap gap-4 justify-center">
-          {["Donor", "Beneficiary", "Volunteer"].map((role, i) => (
-            <button
-              key={i}
-              className="bg-[#FF9800] text-[#333333] px-6 py-3 rounded-md font-medium border border-[#c99b84] hover:bg-[#e68e0a] transition"
-            >
-              Join as {role}
+          
+            <Link to="/add-donation"><button className="cursor-pointer bg-[#FF9800] text-[#333333] px-6 py-3 rounded-md font-medium border border-[#c99b84] hover:bg-[#e68e0a] transition">
+              Join as Donor
+            </button></Link>
+            <button className="cursor-pointer bg-[#FF9800] text-[#333333] px-6 py-3 rounded-md font-medium border border-[#c99b84] hover:bg-[#e68e0a] transition">
+              Join as Reciever
             </button>
-          ))}
+            <button className="cursor-pointer bg-[#FF9800] text-[#333333] px-6 py-3 rounded-md font-medium border border-[#c99b84] hover:bg-[#e68e0a] transition">
+              Join as Volunteer
+            </button>
+         
         </div>
       </div>
     </div>

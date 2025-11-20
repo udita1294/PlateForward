@@ -1,5 +1,5 @@
 import express from 'express';
-import { createDonation , getUserDonations } from '../Controller/donationController';
+import { createDonation , getUserDonations } from '../Controller/donationController.js';
 import authmiddleware from '../middleware/authmiddleware.js';
 import {upload} from '../config/multer.js';
 

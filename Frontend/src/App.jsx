@@ -4,6 +4,7 @@ import Home from "./Pages/Home";
 import Signup from "./Pages/Signup";
 import Navbar from "./Components/Navbar";
 import Login from "./Pages/Login";
+import AddDonations from "./Pages/AddDonations";
 
 const App = () => {
 
@@ -16,6 +17,7 @@ const App = () => {
       <Route path="/" element={<Home />} />
       <Route path="/register" element={<Signup />} />
       <Route path="/login" element={<Login />} />
+      <Route path="/add-donation" element={<AddDonations />} />
 
      </Routes>
     </div>
