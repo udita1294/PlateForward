@@ -6,13 +6,15 @@ export const StoreContext = createContext(null);
 const StoreContextProvider = (props) => {
 
     const url = "http://localhost:3000"; 
-    const [token, setToken] = useState("");
+
+    const [token, setToken] = useState(localStorage.getItem("token") || "");
 
     useEffect(() => {
-        if (localStorage.getItem("token")) {
-            setToken(localStorage.getItem("token"));
-        }
-    }, []);
+    if (token) {
+        localStorage.setItem("token", token);
+    }
+    }, [token]);
+
 
     const contextValue = {
         url,

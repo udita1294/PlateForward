@@ -16,30 +16,32 @@ export default function Login() {
     setForm({ ...form, [e.target.name]: e.target.value });
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    const payload = {
-      email: form.email,
-      password: form.password,
-    };
-
-    try {
-      const response = await axios.post(`${url}/login`, payload);
-
-      if (response.data.success) {
-        setToken(response.data.token);
-        localStorage.setItem("token", response.data.token);
-        alert("Login Successful!");
-
-        navigate("/"); // redirect after login
-      } else {
-        alert(response.data.message);
-      }
-    } catch (err) {
-      console.log(err);
-      alert(err.response?.data?.message || "Login failed");
-    }
+  const payload = {
+    email: form.email,
+    password: form.password,
   };
+
+  try {
+    const response = await axios.post(`${url}/api/user/login`, payload);
+
+    if (response.data.success) {
+      setToken(response.data.token);
+      localStorage.setItem("token", response.data.token);
+      // setToken(response.data.token);
+
+      alert("Login Successful!");
+      navigate("/");
+    } else {
+      alert(response.data.message);
+    }
+  } catch (err) {
+    console.log(err);
+    alert(err.response?.data?.message || "Login failed");
+  }
+};
+
 
   return (
     <div className="min-h-screen w-full bg-gradient-to-b from-[#F9F9F6] to-[#f0fdf4] flex items-start justify-center pt-20 text-black">

@@ -41,7 +41,8 @@ export default function Signup() {
   };
 
   try {
-    const response = await axios.post(`${url}/register`, payload);
+    const response = await axios.post(`${url}/api/user/register`, payload);
+
 
     if (response.data.success) {
       setToken(response.data.token);

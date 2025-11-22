@@ -17,7 +17,7 @@ const donationSchema = new mongoose.Schema({
   },
   pickupDateTime : {type : Date , required : true},
 
-  status : {type : String , enum : ['pending','accepted','collected','cancelled'], default : 'pending'},
+  status : {type : String , enum : ['active','accepted','collected','cancelled'], default : 'active'},
 
   createdAt : {type : Date , default : Date.now}
 

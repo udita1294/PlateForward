@@ -5,6 +5,7 @@ import Signup from "./Pages/Signup";
 import Navbar from "./Components/Navbar";
 import Login from "./Pages/Login";
 import AddDonations from "./Pages/AddDonations";
+import DonorDashboard from "./Pages/DonorDashboard";
 
 const App = () => {
 
@@ -18,6 +19,8 @@ const App = () => {
       <Route path="/register" element={<Signup />} />
       <Route path="/login" element={<Login />} />
       <Route path="/add-donation" element={<AddDonations />} />
+      <Route path="/my-donations" element={<DonorDashboard />} />
+
 
      </Routes>
     </div>
