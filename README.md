@@ -38,7 +38,6 @@ View donation history
 ### **🔐 Authentication**
 
 JWT-based authentication
-
 Secure login & signup
 
 Role-based access control
@@ -93,3 +92,9 @@ Vercel (Frontend hosting)
 Render  (Backend hosting)
 
 Cloudinary (Image storage)
+
+<img width="1886" height="929" alt="image" src="https://github.com/user-attachments/assets/469c1c70-2816-4889-9930-e3acee069dc6" />
+<img width="1884" height="914" alt="image" src="https://github.com/user-attachments/assets/0b1756f2-cb50-47e6-a6ed-20389c02e890" />
+<img width="1884" height="919" alt="image" src="https://github.com/user-attachments/assets/20d9146f-d9be-442c-82bb-7b2b89bb677a" />
+
+
