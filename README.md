@@ -38,6 +38,7 @@ View donation history
 ### **🔐 Authentication**
 
 JWT-based authentication
+
 Secure login & signup
 
 Role-based access control
