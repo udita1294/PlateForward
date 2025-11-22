@@ -63,8 +63,8 @@ export default function Signup() {
       onClick={() => setRole(value)}
       className={`cursor-pointer p-5 rounded-xl border ${
         role === value
-          ? "bg-[#e28c0a] border-[#f5eadb] text-black"
-          : "bg-[#f5eadb] border-[#4a3a31] text-black"
+          ? "bg-[#e28c0a] border-[#f8f3ed] text-black"
+          : "bg-[#f8f3ed] border-[#4a3a31] text-black"
       } transition-all`}
     >
       {/* <div className="text-3xl mb-2">🍽️</div> */}
@@ -104,7 +104,7 @@ export default function Signup() {
               <input
                 type="text"
                 name="name"
-                className="w-full mt-1 p-3 rounded-lg bg-[#f5eadb] border border-[#4a3a31]"
+                className="w-full mt-1 p-3 rounded-lg bg-[#f8f3ed] border border-[#4a3a31]"
                 placeholder="Full Name"
                 onChange={handleChange}
               />
@@ -114,7 +114,7 @@ export default function Signup() {
               <input
                 type="text"
                 name="email"
-                className="w-full mt-1 p-3 rounded-lg bg-[#f5eadb] border border-[#4a3a31]"
+                className="w-full mt-1 p-3 rounded-lg bg-[#f8f3ed] border border-[#4a3a31]"
                 placeholder="Email Address"
                 onChange={handleChange}
               />
@@ -123,7 +123,7 @@ export default function Signup() {
               <input
                 type="password"
                 name="password"
-                className="w-full mt-1 p-3 rounded-lg bg-[#f5eadb] border border-[#4a3a31]"
+                className="w-full mt-1 p-3 rounded-lg bg-[#f8f3ed] border border-[#4a3a31]"
                 placeholder="Password"
                 onChange={handleChange}
               />
@@ -132,7 +132,7 @@ export default function Signup() {
               <input
                 type="text"
                 name="phone"
-                className="w-full mt-1 p-3 rounded-lg bg-[#f5eadb] border border-[#4a3a31]"
+                className="w-full mt-1 p-3 rounded-lg bg-[#f8f3ed] border border-[#4a3a31]"
                 placeholder="Phone Number"
                 onChange={handleChange}
               />
@@ -146,7 +146,7 @@ export default function Signup() {
             <input
               type="text"
               name="street"
-              className="w-full mt-1 p-3 rounded-lg bg-[#f5eadb] border border-[#4a3a31]"
+              className="w-full mt-1 p-3 rounded-lg bg-[#f8f3ed] border border-[#4a3a31]"
               placeholder="Street Address"
               onChange={handleChange}
             />
@@ -158,7 +158,7 @@ export default function Signup() {
               <input
                 type="text"
                 name="city"
-                className="w-full mt-1 p-3 rounded-lg bg-[#f5eadb] border border-[#4a3a31]"
+                className="w-full mt-1 p-3 rounded-lg bg-[#f8f3ed] border border-[#4a3a31]"
                 placeholder="City"
                 onChange={handleChange}
               />
@@ -168,7 +168,7 @@ export default function Signup() {
               <input
                 type="text"
                 name="state"
-                className="w-full mt-1 p-3 rounded-lg bg-[#f5eadb] border border-[#4a3a31]"
+                className="w-full mt-1 p-3 rounded-lg bg-[#f8f3ed] border border-[#4a3a31]"
                 placeholder="State"
                 onChange={handleChange}
               />
@@ -178,7 +178,7 @@ export default function Signup() {
               <input
                 type="text"
                 name="zip"
-                className="w-full mt-1 p-3 rounded-lg bg-[#f5eadb] border border-[#4a3a31]"
+                className="w-full mt-1 p-3 rounded-lg bg-[#f8f3ed] border border-[#4a3a31]"
                 placeholder="Pin Code"
                 onChange={handleChange}
               />
