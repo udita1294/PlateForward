@@ -1,7 +1,6 @@
 import { FaLeaf, FaHeart, FaMapMarkerAlt } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 
-
 export default function ImpactSection() {
   return (
     <div>
@@ -13,11 +12,11 @@ export default function ImpactSection() {
               Fighting Food Waste & Hunger
             </h2>
             <p className="text-base md:text-lg text-[#333333] leading-relaxed mb-6">
-              Every year, millions of tons of perfectly good food go to waste while
-              people in our communities struggle with food insecurity.
+              Every year, millions of tons of perfectly good food go to waste
+              while people in our communities struggle with food insecurity.
               <span className="font-semibold text-[#d9a066]"> FoodShare </span>
-              bridges this gap by creating a platform where excess food finds its
-              way to those who need it most.
+              bridges this gap by creating a platform where excess food finds
+              its way to those who need it most.
             </p>
 
             <ul className="space-y-4">
@@ -40,7 +39,9 @@ export default function ImpactSection() {
           <div className="bg-[#cbf3cd] rounded-lg flex items-center justify-center h-64 shadow-lg">
             <div className="text-center">
               <span className="text-5xl">🍴</span>
-              <p className="mt-4 text-[#d9a066] font-medium">Impact Visualization</p>
+              <p className="mt-4 text-[#d9a066] font-medium">
+                Impact Visualization
+              </p>
             </div>
           </div>
         </div>
@@ -52,20 +53,21 @@ export default function ImpactSection() {
           Ready to Make a Difference ?
         </h1>
         <p className="font-medium mt-6 text-lg">
-          Join thousands of community members who are fighting food waste and hunger
+          Join thousands of community members who are fighting food waste and
+          hunger
         </p>
         <div className="mt-10 flex flex-wrap gap-4 justify-center">
-          
-            <Link to="/add-donation"><button className="cursor-pointer bg-[#FF9800] text-[#333333] px-6 py-3 rounded-md font-medium border border-[#c99b84] hover:bg-[#e68e0a] transition">
+          <Link to="/add-donation">
+            <button className="cursor-pointer bg-[#FF9800] text-[#333333] px-6 py-3 rounded-md font-medium border border-[#c99b84] hover:bg-[#e68e0a] transition">
               Join as Donor
-            </button></Link>
-            <button className="cursor-pointer bg-[#FF9800] text-[#333333] px-6 py-3 rounded-md font-medium border border-[#c99b84] hover:bg-[#e68e0a] transition">
-              Join as Reciever
             </button>
-            <button className="cursor-pointer bg-[#FF9800] text-[#333333] px-6 py-3 rounded-md font-medium border border-[#c99b84] hover:bg-[#e68e0a] transition">
-              Join as Volunteer
-            </button>
-         
+          </Link>
+          <button className="cursor-pointer bg-[#FF9800] text-[#333333] px-6 py-3 rounded-md font-medium border border-[#c99b84] hover:bg-[#e68e0a] transition">
+            Join as Reciever
+          </button>
+          <button className="cursor-pointer bg-[#FF9800] text-[#333333] px-6 py-3 rounded-md font-medium border border-[#c99b84] hover:bg-[#e68e0a] transition">
+            Join as Volunteer
+          </button>
         </div>
       </div>
     </div>

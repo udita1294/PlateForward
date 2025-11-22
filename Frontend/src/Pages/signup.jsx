@@ -1,62 +1,58 @@
-import { useState ,useContext} from "react";
+import { useState, useContext } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { StoreContext } from "../Context/StoreContext";
 
-
 export default function Signup() {
-  const {url,setToken} = useContext(StoreContext);
+  const { url, setToken } = useContext(StoreContext);
 
   const [role, setRole] = useState("donor");
   const [form, setForm] = useState({
-  name: "",
-  email: "",
-  password: "",
-  phone: "",
-  street: "",
-  city: "",
-  state: "",
-  zip: "",
-});
-
+    name: "",
+    email: "",
+    password: "",
+    phone: "",
+    street: "",
+    city: "",
+    state: "",
+    zip: "",
+  });
 
   const handleChange = (e) =>
     setForm({ ...form, [e.target.name]: e.target.value });
 
   const handleSubmit = async (e) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  const payload = {
-    name: form.name,
-    email: form.email,
-    password: form.password,
-    phone: form.phone,
-    address: {
-      street: form.street,
-      city: form.city,
-      state: form.state,
-      zip: form.zip,
-    },
-    role,
-  };
+    const payload = {
+      name: form.name,
+      email: form.email,
+      password: form.password,
+      phone: form.phone,
+      address: {
+        street: form.street,
+        city: form.city,
+        state: form.state,
+        zip: form.zip,
+      },
+      role,
+    };
 
-  try {
-    const response = await axios.post(`${url}/api/user/register`, payload);
+    try {
+      const response = await axios.post(`${url}/api/user/register`, payload);
 
-
-    if (response.data.success) {
-      setToken(response.data.token);
-      localStorage.setItem("token", response.data.token);
-      alert("Signup successful!");
-    } else {
-      alert(response.data.message);
+      if (response.data.success) {
+        setToken(response.data.token);
+        localStorage.setItem("token", response.data.token);
+        alert("Signup successful!");
+      } else {
+        alert(response.data.message);
+      }
+    } catch (err) {
+      console.log(err);
+      alert(err.response?.data?.message || "Signup failed");
     }
-  } catch (err) {
-    console.log(err);
-    alert(err.response?.data?.message || "Signup failed");
-  }
-};
-
+  };
 
   const roleCard = (value, title, subtitle) => (
     <div

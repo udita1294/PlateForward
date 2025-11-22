@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import Navbar from "./Navbar";
 import Cards from "./Cards";
 import { motion } from "framer-motion";
@@ -78,7 +78,7 @@ const Hero = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Hero
+export default Hero;

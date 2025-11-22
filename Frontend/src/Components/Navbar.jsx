@@ -27,9 +27,9 @@ const Navbar = () => {
           <a href="#how" className="hover:text-gray-500">
             How it Works
           </a>
-          <Link to = '/my-donations'><p className="hover:text-gray-500">
-            Donations
-          </p></Link>
+          <Link to="/my-donations">
+            <p className="hover:text-gray-500">Donations</p>
+          </Link>
 
           {/* ---------- CONDITIONAL RENDERING ---------- */}
 
