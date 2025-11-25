@@ -30,8 +30,8 @@ const donationSchema = new mongoose.Schema({
     enum: ["active", "accepted", "collected", "cancelled"],
     default: "active",
   },
-
-  createdAt: { type: Date, default: Date.now },
-});
+  imgUrl:{type:String},
+  cloudinaryId:{type:String}
+},{ timestamps: true });
 
 export default mongoose.model("Donation", donationSchema);

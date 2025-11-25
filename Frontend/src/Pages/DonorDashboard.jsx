@@ -41,7 +41,7 @@ export default function DonorDashboard() {
           >
             {/* Image */}
             <img
-              src={item.imageUrl}
+              src={item.imgUrl}
               alt={item.title}
               className="h-48 w-full object-cover"
             />

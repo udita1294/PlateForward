@@ -14,7 +14,8 @@ export const createDonation = async (req, res) => {
       quantity: Number(quantity),
       pickupAddress,
       pickupDateTime: new Date(pickupDateTime),
-      imageUrl: req.file?.path || null,
+      imgUrl: req.file?.path || null,
+      cloudinaryId: req.file?.filename || null
     });
 
     res.status(201).json({ success: true, donation: newDonation });
