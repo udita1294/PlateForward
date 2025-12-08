@@ -14,7 +14,7 @@ const Navbar = () => {
 
   return (
     <div>
-      <nav className="flex items-center justify-between px-8 py-4 border-b border-gray-700">
+      <nav className="flex items-center justify-between px-8 py-4 border-b border-gray-700 bg-[#F9F9F6]">
         <div className="flex items-center space-x-2">
           <span className="text-2xl">🍴</span>
           <h1 className="text-xl font-bold">PlateForward</h1>

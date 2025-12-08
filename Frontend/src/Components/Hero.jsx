@@ -8,7 +8,7 @@ const Hero = () => {
     <div>
       <div className="bg-gradient-to-b from-[#F9F9F6] to-[#f0fdf4] text-[#333333] font-sans min-h-screen">
         {/* Navbar */}
-        <Navbar />
+        
 
         {/* Hero Section */}
         <motion.section

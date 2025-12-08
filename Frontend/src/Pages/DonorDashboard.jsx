@@ -21,7 +21,7 @@ export default function DonorDashboard() {
 
   return (
     <div className="max-w-5xl mx-auto px-4 py-10">
-      <h2 className="text-3xl font-bold text-green-600 mb-8 text-center">
+      <h2 className="text-4xl font-bold text-green-600 mb-8 text-center">
         My Donations
       </h2>
 
@@ -37,8 +37,7 @@ export default function DonorDashboard() {
         {donations.map((item) => (
           <div
             key={item._id}
-            className="bg-white shadow-lg rounded-xl overflow-hidden border border-gray-200"
-          >
+            className="bg-white shadow-lg rounded-xl overflow-hidden border border-gray-200 mt-14">
             {/* Image */}
             <img
               src={item.imgUrl}
@@ -59,24 +58,19 @@ export default function DonorDashboard() {
                 className={`inline-block px-3 py-1 text-xs font-medium rounded-full 
                   ${
                     item.status === "accepted"
-                      ? "bg-green-100 text-green-700"
-                      : ""
+                      ? "bg-green-100 text-green-700": ""
                   }
                   ${
                     item.status === "active"
-                      ? "bg-yellow-100 text-yellow-700"
-                      : ""
+                      ? "bg-yellow-100 text-yellow-700": ""
                   }
                   ${
                     item.status === "collected"
-                      ? "bg-blue-100 text-blue-700"
-                      : ""
+                      ? "bg-blue-100 text-blue-700": ""
                   }
                   ${
                     item.status === "cancelled" ? "bg-red-100 text-red-700" : ""
-                  }
-
-                `}
+                  }`}
               >
                 {item.status.toUpperCase()}
               </span>

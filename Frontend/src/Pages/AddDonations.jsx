@@ -65,18 +65,18 @@ export default function AddDonations() {
   };
 
   return (
-    <div className="max-w-xl mx-auto p-6 bg-white shadow-lg rounded-xl mt-10">
-      <h2 className="text-2xl font-bold mb-6 text-center text-green-600">
+    <div className="max-w-xl mx-auto p-6 bg-gradient-to-b from-[#F9F9F6] to-[#eff8f2] shadow-lg rounded-xl mt-10 border-2 border-gray-300">
+      <h2 className="text-3xl font-bold mb-6 text-center text-green-600">
         Post a Food Donation
       </h2>
 
       <form onSubmit={handleSubmit} className="space-y-4">
-        {/* Title */}
+        {/* food */}
         <div>
-          <label className="block text-gray-600 font-medium mb-1">Title</label>
+          <label className="block text-gray-600 font-medium mb-1">Food</label>
           <input
             className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-green-500 focus:outline-none"
-            placeholder="Eg: Fresh Rice & Dal"
+            placeholder="Enter Food Item"
             onChange={(e) => setForm({ ...form, title: e.target.value })}
           />
         </div>
@@ -88,7 +88,7 @@ export default function AddDonations() {
           </label>
           <textarea
             className="w-full border border-gray-300 rounded-lg px-3 py-2 h-24 focus:ring-2 focus:ring-green-500 focus:outline-none"
-            placeholder="Describe the food (Fresh home-cooked, packaged, etc.)"
+            placeholder="Enter Description"
             onChange={(e) => setForm({ ...form, description: e.target.value })}
           />
         </div>
@@ -110,21 +110,21 @@ export default function AddDonations() {
 
         {/* Quantity */}
         <div>
-          <label className="block text-gray-600 font-medium mb-1">
+          <label className="block text-gray-600 font-medium mb-1 focus:ring-2 focus:ring-green-500 focus:outline-none">
             Quantity (people served / units)
           </label>
           <input
             className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-green-500 focus:outline-none"
-            placeholder="Eg: 5 plates"
+            placeholder="Enter Quantity"
             onChange={(e) => setForm({ ...form, quantity: e.target.value })}
           />
         </div>
 
         {/* Address Street */}
         <div>
-          <label className="block text-gray-600 font-medium mb-1">Street</label>
+          <label className="block text-gray-600 font-medium mb-1 ">Street</label>
           <input
-            className="w-full border..."
+            className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-green-500 focus:outline-none"
             placeholder="Street"
             onChange={(e) => setForm({ ...form, street: e.target.value })}
           />
@@ -134,7 +134,7 @@ export default function AddDonations() {
         <div>
           <label className="block text-gray-600 font-medium mb-1">City</label>
           <input
-            className="w-full border..."
+            className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-green-500 focus:outline-none"
             placeholder="City"
             onChange={(e) => setForm({ ...form, city: e.target.value })}
           />
@@ -144,7 +144,7 @@ export default function AddDonations() {
         <div>
           <label className="block text-gray-600 font-medium mb-1">State</label>
           <input
-            className="w-full border..."
+            className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-green-500 focus:outline-none"
             placeholder="State"
             onChange={(e) => setForm({ ...form, state: e.target.value })}
           />
@@ -156,8 +156,8 @@ export default function AddDonations() {
             Pin Code
           </label>
           <input
-            className="w-full border..."
-            placeholder="123456"
+            className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-green-500 focus:outline-none"
+            placeholder="Pin Code"
             onChange={(e) => setForm({ ...form, pin: e.target.value })}
           />
         </div>
@@ -169,7 +169,7 @@ export default function AddDonations() {
           </label>
           <input
             type="datetime-local"
-            className="w-full border..."
+            className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-green-500 focus:outline-none"
             onChange={(e) =>
               setForm({ ...form, pickupDateTime: e.target.value })
             }
@@ -191,7 +191,7 @@ export default function AddDonations() {
         {/* Submit Button */}
         <button
           type="submit"
-          className="cursor-pointer w-full bg-green-600 hover:bg-green-700 text-white py-3 rounded-lg font-semibold transition-all duration-200"
+          className="cursor-pointer w-full bg-green-600 hover:bg-green-700 text-white py-3 rounded-lg font-semibold transition-all duration-200 mt-5"
         >
           Post Donation
         </button>
