@@ -12,7 +12,6 @@ export default function MyDonations() {
   useEffect(() => {
     if (!token) return;
     fetchMyDonations();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [token]);
 
   const fetchMyDonations = async () => {
