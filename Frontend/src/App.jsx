@@ -6,6 +6,7 @@ import Navbar from "./Components/Navbar";
 import Login from "./Pages/Login";
 import AddDonations from "./Pages/AddDonations";
 import DonorDashboard from "./Pages/DonorDashboard";
+import NgoDashboard from "./Pages/NgoDashboard";
 
 const App = () => {
 
@@ -20,6 +21,7 @@ const App = () => {
       <Route path="/login" element={<Login />} />
       <Route path="/add-donation" element={<AddDonations />} />
       <Route path="/my-donations" element={<DonorDashboard />} />
+      <Route path="/ngo-dashboard" element={<NgoDashboard />} />
 
 
      </Routes>

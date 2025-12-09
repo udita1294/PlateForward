@@ -7,9 +7,6 @@ const Hero = () => {
   return (
     <div>
       <div className="bg-gradient-to-b from-[#F9F9F6] to-[#f0fdf4] text-[#333333] font-sans min-h-screen">
-        {/* Navbar */}
-        
-
         {/* Hero Section */}
         <motion.section
           initial={{ opacity: 0, y: 40 }}
@@ -44,14 +41,12 @@ const Hero = () => {
           >
             <motion.button
               whileHover={{ scale: 1.1 }}
-              className="bg-[#81C784] text-black px-6 py-3 rounded-md font-medium hover:bg-[#4ccf52] transition"
-            >
+              className="bg-[#81C784] text-black px-6 py-3 rounded-md font-medium hover:bg-[#4ccf52] transition cursor-pointer">
               Get Started →
             </motion.button>
             <motion.button
               whileHover={{ scale: 1.1 }}
-              className="bg-[#FF9800] text-[#333333] px-6 py-3 rounded-md font-medium border border-[#c99b84] hover:bg-[#e68e0a] transition"
-            >
+              className="cursor-pointer bg-[#FF9800] text-[#333333] px-6 py-3 rounded-md font-medium border border-[#c99b84] hover:bg-[#e68e0a] transition">
               Browse Available Food
             </motion.button>
           </motion.div>

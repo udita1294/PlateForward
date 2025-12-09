@@ -4,6 +4,7 @@ import cors from "cors";
 import connectDB from "./config/db.js";
 import userRoutes from "./Routes/UserRoute.js";
 import donationRoutes from "./Routes/donationRoutes.js";
+import ngoRoutes from "./Routes/ngoRoutes.js";
 
 const app = express();
 
@@ -14,6 +15,7 @@ await connectDB();
 
 app.use("/api/user", userRoutes);
 app.use("/api/donation", donationRoutes);
+app.use("/api/ngo", ngoRoutes);
 
 const PORT = process.env.PORT || 3000;
 
