@@ -12,6 +12,7 @@ export default function MyDonations() {
   useEffect(() => {
     if (!token) return;
     fetchMyDonations();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [token]);
 
   const fetchMyDonations = async () => {
@@ -19,7 +20,7 @@ export default function MyDonations() {
       setLoading(true);
       setError("");
 
-      const res = await axios.get(`${url}/api/donations/my-donations`, {
+      const res = await axios.get(`${url}/api/donation/my-donations`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -58,7 +59,7 @@ export default function MyDonations() {
       )}
 
       {!loading && donations.length > 0 && (
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto mt-20">
           <table className="min-w-full bg-white border border-gray-200 rounded-lg shadow-sm">
             <thead className="bg-green-50">
               <tr>
@@ -98,14 +99,17 @@ export default function MyDonations() {
                     <span
                       className={`px-2 py-1 rounded-full text-xs font-medium
                         ${
-                          donation.status === "active"? "bg-blue-50 text-blue-700"
+                          donation.status === "active"
+                            ? "bg-blue-50 text-blue-700"
                             : donation.status === "accepted"
                             ? "bg-green-50 text-green-700"
                             : donation.status === "assigned"
                             ? "bg-purple-50 text-purple-700"
                             : donation.status === "collected"
                             ? "bg-emerald-50 text-emerald-700"
-                            : "bg-red-50 text-red-700"}`}>
+                            : "bg-red-50 text-red-700"
+                        }`}
+                    >
                       {donation.status}
                     </span>
                   </td>
