@@ -35,3 +35,19 @@ export const getUserDonations = async (req, res) => {
     res.status(500).json({ success: false, message: err.message });
   }
 };
+
+
+
+// Get all donations of logged-in donor
+export const getMyDonations = async (req, res) => {
+  try {
+    const donations = await Donation.find({ donorId: req.user.id })
+      .sort({ createdAt: -1 });
+
+    res.json({ success: true, donations });
+  } catch (err) {
+    console.error("Get my donations error:", err);
+    res.status(500).json({ success: false, message: "Server Error" });
+  }
+};
+

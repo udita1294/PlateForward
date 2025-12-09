@@ -17,6 +17,7 @@ export default function NgoDashboard() {
   useEffect(() => {
     if (!token) return;
     fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [token]);
 
   const fetchData = async () => {
@@ -24,11 +25,12 @@ export default function NgoDashboard() {
       setLoading(true);
       setError("");
 
+      // 👇 match backend: GET /active-donations and GET /pickups
       const [availableRes, pickupsRes] = await Promise.all([
-        axios.get(`${url}/api/ngo/available-donations`, {
+        axios.get(`${url}/api/ngo/active-donations`, {
           headers: { Authorization: `Bearer ${token}` },
         }),
-        axios.get(`${url}/api/ngo/my-pickups`, {
+        axios.get(`${url}/api/ngo/pickups`, {
           headers: { Authorization: `Bearer ${token}` },
         }),
       ]);
@@ -48,9 +50,10 @@ export default function NgoDashboard() {
       setAcceptingId(donationId);
       setError("");
 
+      // 👇 match backend: POST /accept-donation/:id
       const res = await axios.post(
-        `${url}/api/ngo/accept/${donationId}`,
-        {}, // later you can send { volunteerId }
+        `${url}/api/ngo/accept-donation/${donationId}`,
+        {}, // body empty for now
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -73,8 +76,10 @@ export default function NgoDashboard() {
   const handleStatusChange = async (donationId, newStatus) => {
     try {
       setError("");
-      const res = await axios.patch(
-        `${url}/api/ngo/pickup/${donationId}/status`,
+
+      // 👇 match backend: PUT /update-pickup-status/:id
+      const res = await axios.put(
+        `${url}/api/ngo/update-pickup-status/${donationId}`,
         { status: newStatus },
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -94,17 +99,17 @@ export default function NgoDashboard() {
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-10">
-      <h1 className="text-3xl font-bold text-green-700 mb-6 text-center">
-        NGO Dashboard
+      <h1 className="text-4xl font-bold text-green-700 mb-6 text-center">
+        Receiver Dashboard
       </h1>
 
       {/* Tabs */}
-      <div className="flex justify-center mb-6 gap-3">
+      <div className="flex justify-center mb-6 gap-3 mt-14">
         <button
           onClick={() => setActiveTab("available")}
-          className={`px-4 py-2 rounded-full text-sm font-medium border ${
+          className={`cursor-pointer px-4 py-2 rounded-full text-sm font-medium border ${
             activeTab === "available"
-              ? "bg-green-600 text-white border-green-600"
+              ? "bg-[#f8b008] text-white border-[#f8b008]"
               : "bg-white text-gray-700 border-gray-300"
           }`}
         >
@@ -112,9 +117,9 @@ export default function NgoDashboard() {
         </button>
         <button
           onClick={() => setActiveTab("myPickups")}
-          className={`px-4 py-2 rounded-full text-sm font-medium border ${
+          className={`cursor-pointer px-4 py-2 rounded-full text-sm font-medium border ${
             activeTab === "myPickups"
-              ? "bg-green-600 text-white border-green-600"
+              ? "bg-[#f8b008] text-white border-[#f8b008]"
               : "bg-white text-gray-700 border-gray-300"
           }`}
         >

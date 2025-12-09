@@ -2,6 +2,8 @@ import React from "react";
 import Navbar from "./Navbar";
 import Cards from "./Cards";
 import { motion } from "framer-motion";
+import { Link, useNavigate } from "react-router-dom";
+
 
 const Hero = () => {
   return (
@@ -44,11 +46,12 @@ const Hero = () => {
               className="bg-[#81C784] text-black px-6 py-3 rounded-md font-medium hover:bg-[#4ccf52] transition cursor-pointer">
               Get Started →
             </motion.button>
+            <Link to="/ngo-dashboard">
             <motion.button
               whileHover={{ scale: 1.1 }}
               className="cursor-pointer bg-[#FF9800] text-[#333333] px-6 py-3 rounded-md font-medium border border-[#c99b84] hover:bg-[#e68e0a] transition">
               Browse Available Food
-            </motion.button>
+            </motion.button></Link>
           </motion.div>
         </motion.section>
       </div>

@@ -4,7 +4,7 @@ import { getAllActiveDonations , acceptDonation,getNgoPickups,updatePickupStatus
 
 const router = express.Router();
 
-router.use(authmiddleware , requireRole("ngo"));
+router.use(authmiddleware , requireRole("receiver"));
 
 router.get("/active-donations" , getAllActiveDonations);
 router.post("/accept-donation/:id" , acceptDonation);

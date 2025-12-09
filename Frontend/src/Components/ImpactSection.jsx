@@ -62,9 +62,11 @@ export default function ImpactSection() {
               Join as Donor
             </button>
           </Link>
+          <Link to="/ngo-dashboard">
           <button className="cursor-pointer bg-[#FF9800] text-[#333333] px-6 py-3 rounded-md font-medium border border-[#c99b84] hover:bg-[#e68e0a] transition">
             Join as Reciever
           </button>
+          </Link>
           <button className="cursor-pointer bg-[#FF9800] text-[#333333] px-6 py-3 rounded-md font-medium border border-[#c99b84] hover:bg-[#e68e0a] transition">
             Join as Volunteer
           </button>
