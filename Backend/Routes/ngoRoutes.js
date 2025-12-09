@@ -1,6 +1,5 @@
 import express from "express";
-import {authmiddleware} from "../middleware/authmiddleware.js";
-import { requireRole } from "../middleware/authmiddleware.js";
+import {authmiddleware , requireRole} from "../middleware/authmiddleware.js";
 import { getAllActiveDonations , acceptDonation,getNgoPickups,updatePickupStatus } from "../Controller/ngoController.js";
 
 const router = express.Router();
