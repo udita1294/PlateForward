@@ -12,7 +12,6 @@ export default function MyDonations() {
   useEffect(() => {
     if (!token) return;
     fetchMyDonations();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [token]);
 
   const fetchMyDonations = async () => {
@@ -99,17 +98,14 @@ export default function MyDonations() {
                     <span
                       className={`px-2 py-1 rounded-full text-xs font-medium
                         ${
-                          donation.status === "active"
-                            ? "bg-blue-50 text-blue-700"
+                          donation.status === "active"? "bg-blue-50 text-blue-700"
                             : donation.status === "accepted"
                             ? "bg-green-50 text-green-700"
                             : donation.status === "assigned"
                             ? "bg-purple-50 text-purple-700"
                             : donation.status === "collected"
                             ? "bg-emerald-50 text-emerald-700"
-                            : "bg-red-50 text-red-700"
-                        }`}
-                    >
+                            : "bg-red-50 text-red-700"}`}>
                       {donation.status}
                     </span>
                   </td>
