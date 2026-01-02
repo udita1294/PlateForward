@@ -1,12 +1,12 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import Home from "./Pages/Home";
-import Signup from "./Pages/Signup.jsx";
-import Navbar from "./Components/Navbar";
-import Login from "./Pages/Login";
-import AddDonations from "./Pages/AddDonations";
-import DonorDashboard from "./Pages/DonorDashboard";
-import NgoDashboard from "./Pages/NgoDashboard";
+import Home from "./pages/Home.jsx";
+import Signup from "./pages/Signup.jsx";
+import Login from "./pages/Login.jsx";
+import AddDonations from "./pages/AddDonations.jsx";
+import DonorDashboard from "./pages/DonorDashboard.jsx";
+import NgoDashboard from "./pages/NgoDashboard.jsx";
+
 
 const App = () => {
 
