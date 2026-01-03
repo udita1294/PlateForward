@@ -5,6 +5,7 @@ import { StoreContext } from "../Context/StoreContext";
 
 export default function Signup() {
   const { url, setToken } = useContext(StoreContext);
+   const navigate = useNavigate(); 
 
   const [role, setRole] = useState("donor");
   const [form, setForm] = useState({
@@ -45,6 +46,10 @@ export default function Signup() {
         setToken(response.data.token);
         localStorage.setItem("token", response.data.token);
         alert("Signup successful!");
+        if (role === "donor") {
+    navigate("/add-donation");
+  } else if (role === "receiver") {
+    navigate("/ngo-dashboard");}
       } else {
         alert(response.data.message);
       }
