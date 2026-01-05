@@ -3,6 +3,7 @@ import axios from "axios";
 import { StoreContext } from "../Context/StoreContext";
 import NgoDonationCard from "../Components/NgoDonationCard";
 import NgoPickupCard from "../Components/NgoPickupCard";
+import { FaBoxOpen, FaTruck, FaHandHoldingHeart, FaSpinner } from "react-icons/fa";
 
 export default function NgoDashboard() {
   const { url, token } = useContext(StoreContext);
@@ -25,7 +26,6 @@ export default function NgoDashboard() {
       setLoading(true);
       setError("");
 
-      // 👇 match backend: GET /active-donations and GET /pickups
       const [availableRes, pickupsRes] = await Promise.all([
         axios.get(`${url}/api/ngo/active-donations`, {
           headers: { Authorization: `Bearer ${token}` },
@@ -50,10 +50,9 @@ export default function NgoDashboard() {
       setAcceptingId(donationId);
       setError("");
 
-      // 👇 match backend: POST /accept-donation/:id
       const res = await axios.post(
         `${url}/api/ngo/accept-donation/${donationId}`,
-        {}, // body empty for now
+        {}, 
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -65,6 +64,7 @@ export default function NgoDashboard() {
         prev.filter((d) => d._id !== donationId)
       );
       setMyPickups((prev) => [updatedDonation, ...prev]);
+      setActiveTab("myPickups"); // Switch to pickups to show user they accepted it
     } catch (err) {
       console.error("Accept donation error:", err);
       setError(err.response?.data?.message || "Failed to accept donation");
@@ -77,7 +77,6 @@ export default function NgoDashboard() {
     try {
       setError("");
 
-      // 👇 match backend: PUT /update-pickup-status/:id
       const res = await axios.put(
         `${url}/api/ngo/update-pickup-status/${donationId}`,
         { status: newStatus },
@@ -98,85 +97,119 @@ export default function NgoDashboard() {
   };
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-10">
-      <h1 className="text-4xl font-bold text-green-700 mb-6 text-center">
-        Receiver Dashboard
-      </h1>
+    <div className="min-h-screen bg-gray-50/50 p-6 md:p-10 font-sans text-gray-800">
+      <div className="max-w-7xl mx-auto">
+        
+        {/* Header */}
+        <div className="mb-10 text-center md:text-left">
+          <h1 className="text-3xl font-bold text-gray-900 flex items-center justify-center md:justify-start gap-3">
+             <FaHandHoldingHeart className="text-green-600" />
+             Receiver Dashboard
+          </h1>
+          <p className="text-gray-500 mt-2">Connect surplus food with those who need it most.</p>
+        </div>
 
-      {/* Tabs */}
-      <div className="flex justify-center mb-6 gap-3 mt-14">
-        <button
-          onClick={() => setActiveTab("available")}
-          className={`cursor-pointer px-4 py-2 rounded-full text-sm font-medium border ${
-            activeTab === "available"
-              ? "bg-[#f8b008] text-white border-[#f8b008]"
-              : "bg-white text-gray-700 border-gray-300"
-          }`}
-        >
-          Available Donations
-        </button>
-        <button
-          onClick={() => setActiveTab("myPickups")}
-          className={`cursor-pointer px-4 py-2 rounded-full text-sm font-medium border ${
-            activeTab === "myPickups"
-              ? "bg-[#f8b008] text-white border-[#f8b008]"
-              : "bg-white text-gray-700 border-gray-300"
-          }`}
-        >
-          My Pickups
-        </button>
+        {/* Stats Overview */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+          <div className="bg-white p-6 rounded-2xl shadow-sm border border-orange-100 flex items-center gap-4">
+            <div className="p-3 bg-orange-50 rounded-full text-orange-600">
+              <FaBoxOpen className="text-2xl" />
+            </div>
+            <div>
+               <p className="text-sm text-gray-500 font-medium">Available to Pickup</p>
+               <p className="text-3xl font-bold text-gray-800">{availableDonations.length}</p>
+            </div>
+          </div>
+
+          <div className="bg-white p-6 rounded-2xl shadow-sm border border-blue-100 flex items-center gap-4">
+             <div className="p-3 bg-blue-50 rounded-full text-blue-600">
+              <FaTruck className="text-2xl" />
+            </div>
+             <div>
+               <p className="text-sm text-gray-500 font-medium">My Active Pickups</p>
+               <p className="text-3xl font-bold text-gray-800">{myPickups.length}</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Custom Tabs */}
+        <div className="mb-8 border-b border-gray-200">
+            <div className="flex gap-8">
+               <button 
+                  onClick={() => setActiveTab('available')}
+                  className={`pb-4 text-sm font-semibold transition-colors relative ${activeTab === 'available' ? 'text-green-600' : 'text-gray-500 hover:text-gray-700'}`}
+               >
+                 Available Donations
+                 {activeTab === 'available' && (
+                    <div className="absolute bottom-0 left-0 w-full h-0.5 bg-green-600 rounded-t-full" />
+                 )}
+               </button>
+               <button 
+                  onClick={() => setActiveTab('myPickups')}
+                  className={`pb-4 text-sm font-semibold transition-colors relative ${activeTab === 'myPickups' ? 'text-green-600' : 'text-gray-500 hover:text-gray-700'}`}
+               >
+                 My Pickups
+                  {activeTab === 'myPickups' && (
+                    <div className="absolute bottom-0 left-0 w-full h-0.5 bg-green-600 rounded-t-full" />
+                 )}
+               </button>
+            </div>
+        </div>
+
+        {error && (
+          <div className="mb-6 p-4 bg-red-50 text-red-600 border border-red-200 rounded-lg text-sm text-center">
+            {error}
+          </div>
+        )}
+
+        {loading && (
+          <div className="flex justify-center py-20">
+             <FaSpinner className="animate-spin text-4xl text-green-600" />
+          </div>
+        )}
+
+        {/* Content */}
+        {!loading && (
+           <>
+              {activeTab === 'available' ? (
+                availableDonations.length === 0 ? (
+                   <div className="text-center py-20 bg-white rounded-2xl border-2 border-dashed border-gray-200">
+                      <FaBoxOpen className="text-4xl text-gray-300 mx-auto mb-4" />
+                      <p className="text-gray-500">No active donations available at the moment.</p>
+                   </div>
+                ) : (
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {availableDonations.map(donation => (
+                       <NgoDonationCard 
+                          key={donation._id} 
+                          donation={donation} 
+                          onAccept={handleAccept} 
+                          isAccepting={acceptingId === donation._id} 
+                        />
+                    ))}
+                  </div>
+                )
+              ) : (
+                 myPickups.length === 0 ? (
+                    <div className="text-center py-20 bg-white rounded-2xl border-2 border-dashed border-gray-200">
+                      <FaTruck className="text-4xl text-gray-300 mx-auto mb-4" />
+                      <p className="text-gray-500">You haven&apos;t accepted any donations yet.</p>
+                   </div>
+                 ) : (
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                       {myPickups.map(donation => (
+                          <NgoPickupCard 
+                            key={donation._id} 
+                            donation={donation} 
+                            onStatusChange={handleStatusChange} 
+                          />
+                       ))}
+                    </div>
+                 )
+              )}
+           </>
+        )}
       </div>
-
-      {error && (
-        <div className="mb-4 text-red-600 text-center text-sm">{error}</div>
-      )}
-
-      {loading && (
-        <div className="text-center text-gray-500">Loading data...</div>
-      )}
-
-      {/* AVAILABLE DONATIONS */}
-      {activeTab === "available" && !loading && (
-        <div>
-          {availableDonations.length === 0 ? (
-            <p className="text-center text-gray-500">
-              No active donations available right now.
-            </p>
-          ) : (
-            <div className="grid md:grid-cols-2 gap-4">
-              {availableDonations.map((donation) => (
-                <NgoDonationCard
-                  key={donation._id}
-                  donation={donation}
-                  onAccept={handleAccept}
-                  isAccepting={acceptingId === donation._id}
-                />
-              ))}
-            </div>
-          )}
-        </div>
-      )}
-
-      {/* MY PICKUPS */}
-      {activeTab === "myPickups" && !loading && (
-        <div>
-          {myPickups.length === 0 ? (
-            <p className="text-center text-gray-500">
-              You haven&apos;t accepted any donations yet.
-            </p>
-          ) : (
-            <div className="space-y-4">
-              {myPickups.map((donation) => (
-                <NgoPickupCard
-                  key={donation._id}
-                  donation={donation}
-                  onStatusChange={handleStatusChange}
-                />
-              ))}
-            </div>
-          )}
-        </div>
-      )}
     </div>
   );
 }

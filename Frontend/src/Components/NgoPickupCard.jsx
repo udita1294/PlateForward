@@ -1,71 +1,94 @@
 import NgoStatusBadge from "./NgoStatusBadge";
+import { FaUtensils, FaWeightHanging, FaMapMarkerAlt, FaClock, FaBoxOpen, FaCheck, FaTruck, FaTimes, FaUserCheck } from "react-icons/fa";
 
-export default function NgoPickupCard({
-  donation,
-  onStatusChange,
-}) {
+export default function NgoPickupCard({ donation, onStatusChange }) {
   return (
-    <div className="border rounded-xl p-4 shadow-sm bg-white flex flex-col gap-2">
-      <div className="flex justify-between items-start gap-2">
-        <h2 className="text-lg font-semibold text-gray-800">
-          {donation.title}
-        </h2>
-        <NgoStatusBadge status={donation.status} />
+    <div className="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow border border-gray-100 overflow-hidden flex flex-col h-full">
+      {/* Image Header */}
+      <div className="h-40 w-full bg-gray-100 relative overflow-hidden group">
+        {donation.imgUrl ? (
+          <img
+            src={donation.imgUrl}
+            alt={donation.title}
+            className="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-500"
+          />
+        ) : (
+          <div className="w-full h-full flex items-center justify-center bg-gray-50 text-gray-300">
+            <FaBoxOpen className="text-4xl opacity-50" />
+          </div>
+        )}
+        <div className="absolute top-3 right-3">
+          <NgoStatusBadge status={donation.status} />
+        </div>
       </div>
 
-      <p className="text-sm text-gray-600">
-        {donation.description || "No description"}
-      </p>
-
-      <p className="text-sm text-gray-700">
-        <span className="font-semibold">Food Type:</span> {donation.foodType}
-      </p>
-      <p className="text-sm text-gray-700">
-        <span className="font-semibold">Quantity:</span> {donation.quantity}
-      </p>
-
-      {donation.pickupAddress && (
-        <p className="text-sm text-gray-700">
-          <span className="font-semibold">Pickup:</span>{" "}
-          {donation.pickupAddress.street},{" "}
-          {donation.pickupAddress.city},{" "}
-          {donation.pickupAddress.pin}
-        </p>
-      )}
-
-      {donation.pickupDateTime && (
-        <p className="text-xs text-gray-500">
-          Pickup Time:{" "}
-          {new Date(donation.pickupDateTime).toLocaleString()}
-        </p>
-      )}
-
-      <div className="flex flex-wrap gap-2 mt-2">
-        <button
-          className="px-3 py-1 text-xs rounded-full border border-blue-500 text-blue-600"
-          onClick={() => onStatusChange(donation._id, "accepted")}
-        >
-          Mark as Accepted
-        </button>
-        <button
-          className="px-3 py-1 text-xs rounded-full border border-indigo-500 text-indigo-600"
-          onClick={() => onStatusChange(donation._id, "assigned")}
-        >
-          Mark as Assigned
-        </button>
-        <button
-          className="px-3 py-1 text-xs rounded-full border border-green-500 text-green-600"
-          onClick={() => onStatusChange(donation._id, "collected")}
-        >
-          Mark as Collected
-        </button>
-        <button
-          className="px-3 py-1 text-xs rounded-full border border-red-500 text-red-600"
-          onClick={() => onStatusChange(donation._id, "cancelled")}
-        >
-          Cancel
-        </button>
+      <div className="p-5 flex flex-col flex-grow">
+        <h2 className="text-lg font-bold text-gray-900 mb-2 line-clamp-1" title={donation.title}>
+          {donation.title}
+        </h2>
+        
+        <div className="space-y-1 mb-4 text-sm text-gray-600">
+            <div className="flex justify-between">
+               <span>Type:</span>
+               <span className="font-medium text-gray-800 capitalize">{donation.foodType}</span>
+            </div>
+            <div className="flex justify-between">
+               <span>Quantity:</span>
+               <span className="font-medium text-gray-800">{donation.quantity}</span>
+            </div>
+             <div className="flex justify-between">
+               <span>Pickup:</span>
+               <span className="font-medium text-gray-800 text-right truncate max-w-[150px]">
+                 {donation.pickupAddress?.city || 'N/A'}
+               </span>
+            </div>
+        </div>
+        
+        {/* Status Actions */}
+        <div className="mt-auto pt-4 border-t border-gray-50">
+           <p className="text-xs font-semibold text-gray-400 mb-2 uppercase tracking-wide">Update Status</p>
+           <div className="grid grid-cols-2 gap-2">
+             <ActionButton 
+                label="Pick Up" 
+                icon={<FaTruck />} 
+                onClick={() => onStatusChange(donation._id, "assigned")}
+                color="blue"
+                active={donation.status === 'assigned'} 
+             />
+             <ActionButton 
+                label="Collected" 
+                icon={<FaCheck />} 
+                onClick={() => onStatusChange(donation._id, "collected")}
+                color="green"
+                active={donation.status === 'collected'}
+             />
+           </div>
+           {donation.status !== 'collected' && (
+              <button 
+                onClick={() => onStatusChange(donation._id, "cancelled")}
+                className="w-full mt-2 text-xs text-red-500 hover:text-red-700 py-1 font-medium flex items-center justify-center gap-1"
+              >
+                  <FaTimes /> Cancel Pickup
+              </button>
+           )}
+        </div>
       </div>
     </div>
   );
+}
+
+function ActionButton({ label, icon, onClick, color, active }) {
+   const colors = {
+     blue: "bg-blue-50 text-blue-600 hover:bg-blue-100 border-blue-200",
+     green: "bg-green-50 text-green-600 hover:bg-green-100 border-green-200",
+   }
+   
+   return (
+      <button 
+        onClick={onClick}
+        className={`flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg text-xs font-bold border transition-all ${colors[color]} ${active ? 'ring-2 ring-offset-1' : ''}`}
+      >
+        {icon} {label}
+      </button>
+   )
 }

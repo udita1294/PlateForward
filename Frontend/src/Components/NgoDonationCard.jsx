@@ -1,61 +1,76 @@
 import NgoStatusBadge from "./NgoStatusBadge";
+import { FaUtensils, FaWeightHanging, FaMapMarkerAlt, FaClock, FaBoxOpen } from "react-icons/fa";
 
-export default function NgoDonationCard({
-  donation,
-  onAccept,
-  isAccepting,
-}) {
+export default function NgoDonationCard({ donation, onAccept, isAccepting }) {
   return (
-    <div className="border rounded-xl p-4 shadow-sm bg-white flex flex-col gap-2">
-      <div className="flex justify-between items-start gap-2">
-        <h2 className="text-lg font-semibold text-gray-800">
-          {donation.title}
-        </h2>
-        <NgoStatusBadge status={donation.status} />
+    <div className="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow border border-gray-100 overflow-hidden flex flex-col h-full">
+      {/* Image Header */}
+      <div className="h-48 w-full bg-gray-100 relative overflow-hidden group">
+        {donation.imgUrl ? (
+          <img
+            src={donation.imgUrl}
+            alt={donation.title}
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          />
+        ) : (
+          <div className="w-full h-full flex items-center justify-center bg-gray-50 text-gray-300">
+            <FaBoxOpen className="text-4xl opacity-50" />
+          </div>
+        )}
+        <div className="absolute top-3 right-3">
+          <NgoStatusBadge status={donation.status} />
+        </div>
       </div>
 
-      {donation.imgUrl && (
-        <img
-          src={donation.imgUrl}
-          alt={donation.title}
-          className="w-full h-40 object-cover rounded-lg mt-1"
-        />
-      )}
-
-      <p className="text-sm text-gray-600">
-        {donation.description || "No description"}
-      </p>
-
-      <p className="text-sm text-gray-700">
-        <span className="font-semibold">Food Type:</span> {donation.foodType}
-      </p>
-      <p className="text-sm text-gray-700">
-        <span className="font-semibold">Quantity:</span> {donation.quantity}
-      </p>
-
-      {donation.pickupAddress && (
-        <p className="text-sm text-gray-700">
-          <span className="font-semibold">Pickup:</span>{" "}
-          {donation.pickupAddress.street},{" "}
-          {donation.pickupAddress.city},{" "}
-          {donation.pickupAddress.pin}
+      <div className="p-5 flex flex-col flex-grow">
+        <h2 className="text-lg font-bold text-gray-900 mb-2 line-clamp-1" title={donation.title}>
+          {donation.title}
+        </h2>
+        
+        <p className="text-sm text-gray-500 mb-4 line-clamp-2 min-h-[2.5em]">
+          {donation.description || "No description provided."}
         </p>
-      )}
 
-      {donation.pickupDateTime && (
-        <p className="text-xs text-gray-500">
-          Pickup Time:{" "}
-          {new Date(donation.pickupDateTime).toLocaleString()}
-        </p>
-      )}
+        <div className="space-y-2 mb-4">
+           <div className="flex items-center gap-2 text-sm text-gray-700">
+              <FaUtensils className="text-green-500 text-xs" />
+              <span className="font-medium capitalize">{donation.foodType}</span>
+           </div>
+           
+           <div className="flex items-center gap-2 text-sm text-gray-700">
+              <FaWeightHanging className="text-blue-500 text-xs" />
+              <span>{donation.quantity} units</span>
+           </div>
 
-      <button
-        className="mt-3 w-full bg-green-600 hover:bg-green-700 text-white text-sm font-medium py-2 rounded-lg disabled:opacity-60"
-        onClick={() => onAccept(donation._id)}
-        disabled={isAccepting}
-      >
-        {isAccepting ? "Accepting..." : "Accept Donation"}
-      </button>
+           {donation.pickupAddress && (
+             <div className="flex items-start gap-2 text-sm text-gray-700">
+                <FaMapMarkerAlt className="text-red-500 text-xs mt-1" />
+                <span className="truncate">{donation.pickupAddress.city}, {donation.pickupAddress.street}</span>
+             </div>
+           )}
+
+           {donation.pickupDateTime && (
+              <div className="flex items-center gap-2 text-xs text-gray-500 mt-2 pt-2 border-t border-gray-50">
+                 <FaClock />
+                 <span>Pickup by: {new Date(donation.pickupDateTime).toLocaleString()}</span>
+              </div>
+           )}
+        </div>
+
+        <div className="mt-auto">
+          <button
+            className={`w-full py-2.5 rounded-lg text-sm font-bold tracking-wide transition-all shadow-sm
+              ${ isAccepting 
+                 ? 'bg-gray-100 text-gray-400 cursor-not-allowed' 
+                 : 'bg-green-600 hover:bg-green-700 text-white hover:shadow-green-100' 
+              }`}
+            onClick={() => onAccept(donation._id)}
+            disabled={isAccepting}
+          >
+            {isAccepting ? "Accepting..." : "Accept Item"}
+          </button>
+        </div>
+      </div>
     </div>
   );
 }
