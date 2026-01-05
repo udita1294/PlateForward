@@ -12,9 +12,13 @@ Receiver → Views and requests available donations
 
 Volunteer → Helps with pickup and delivery
 
-<img width="1886" height="929" alt="image" src="https://github.com/user-attachments/assets/469c1c70-2816-4889-9930-e3acee069dc6" />
-<img width="1884" height="914" alt="image" src="https://github.com/user-attachments/assets/0b1756f2-cb50-47e6-a6ed-20389c02e890" />
-<img width="1883" height="916" alt="image" src="https://github.com/user-attachments/assets/d87b07bb-6033-47f6-aa5a-82dafac6be05" />
+<img width="1877" height="906" alt="image" src="https://github.com/user-attachments/assets/1df4e002-a148-48bc-a7e6-914c2150a67a" />
+<<img width="1870" height="904" alt="image" src="https://github.com/user-attachments/assets/ea871681-c31c-4341-b77a-b7f774ac32e3" />
+<img width="1879" height="895" alt="image" src="https://github.com/user-attachments/assets/81cdbcbb-fddc-4fc3-a069-3178eb78dd78" />
+<img width="1863" height="908" alt="image" src="https://github.com/user-attachments/assets/6da07a32-2cff-488d-8824-c4e3dccd0817" />
+<img width="1884" height="909" alt="image" src="https://github.com/user-attachments/assets/c75c545f-5dcf-4cc9-b7a0-212df9a77a3e" />
+
+
 
 
 ## **🧩 Features**
