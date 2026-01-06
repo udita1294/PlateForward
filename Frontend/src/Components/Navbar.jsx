@@ -15,10 +15,10 @@ const Navbar = () => {
     setIsMenuOpen(false);
   };
 
-  const navLinks = [
-    { name: "Browse Food", path: "/ngo-dashboard" }, // Assuming this routes to where food is listed
-    { name: "How it Works", path: "#how-it-works" },
-  ];
+  // const navLinks = [
+  //   { name: "Browse Food", path: "/ngo-dashboard" }, 
+  //   { name: "How it Works", path: "#how-it-works" },
+  // ];
 
   return (
     <nav className="fixed w-full z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100 shadow-sm transition-all duration-300">
@@ -34,16 +34,13 @@ const Navbar = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            {navLinks.map((link) => (
-              <a 
-                key={link.name}
-                href={link.path} 
-                className="text-gray-600 hover:text-green-600 font-medium transition-colors text-sm"
-              >
-                {link.name}
-              </a>
-            ))}
-            
+
+            <Link to="/ngo-dashboard" className="text-gray-600 hover:text-green-600 font-medium transition-colors text-sm">
+              Browse Food
+            </Link>
+            <Link to="#how-it-works" className="text-gray-600 hover:text-green-600 font-medium transition-colors text-sm">
+              How it Works
+            </Link>
             <Link to="/my-donations" className="text-gray-600 hover:text-green-600 font-medium transition-colors text-sm">
               My Donations
             </Link>

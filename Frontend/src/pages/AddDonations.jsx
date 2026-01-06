@@ -82,7 +82,7 @@ export default function AddDonations() {
       );
 
       // alert("Donation posted!");
-      navigate('/donor-dashboard'); 
+      navigate('/my-donations'); 
     } catch (err) {
       console.log("ERROR:", err.response?.data || err);
       alert(err.response?.data?.message || "Failed to post donation");
