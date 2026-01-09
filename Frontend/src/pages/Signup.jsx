@@ -133,7 +133,7 @@ export default function Signup() {
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
                 <RoleCard value="donor" title="Donor" icon={FaHandHoldingHeart} description="I have food to share" />
                 <RoleCard value="receiver" title="Receiver" icon={FaUser} description="I need food assistance" />
-                <RoleCard value="volunteer" title="Volunteer" icon={FaBiking} description="I want to help deliver" />
+                <RoleCard value="admin" title="Admin" icon={FaBiking} description="Manage users and donations" />
               </div>
 
               {/* Personal Info */}
