@@ -3,9 +3,10 @@ import axios from "axios";
 import { StoreContext } from "../Context/StoreContext";
 import { FaBoxOpen, FaCheckCircle, FaClock, FaHandsHelping, FaLeaf, FaMapMarkerAlt,FaSpinner} from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 export default function MyDonations() {
-  const { url, token } = useContext(StoreContext);
+  const { url, token, socket } = useContext(StoreContext);
 
   const [donations, setDonations] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -15,6 +16,29 @@ export default function MyDonations() {
     if (!token) return;
     fetchMyDonations();
   }, [token]);
+
+ 
+  // Socket Listener
+  useEffect(() => {
+    if(!socket) return;
+    
+    
+    
+    socket.on('donation_accepted', (data) => {
+        // Update state
+        setDonations(prev => prev.map(d => d._id === data.donationId ? {...d, status: data.status} : d));
+    });
+
+    socket.on('pickup_status_updated', (data) => {
+        // Update state
+        setDonations(prev => prev.map(d => d._id === data.donationId ? {...d, status: data.status} : d));
+    });
+
+    return () => {
+        socket.off('donation_accepted');
+        socket.off('pickup_status_updated');
+    }
+  }, [socket]);
 
   const fetchMyDonations = async () => {
     try {
@@ -36,8 +60,8 @@ export default function MyDonations() {
 
   // derived stats
   const totalDonations = donations.length;
-  const activeDonations = donations.filter(d => d.status === 'active').length;
-  const completedDonations = donations.filter(d => ['collected', 'accepted'].includes(d.status)).length;
+  const activeDonations = donations.filter(d => ['pending', 'active'].includes(d.status)).length; 
+  const completedDonations = donations.filter(d => ['delivered', 'collected'].includes(d.status)).length;
 
   const formatDate = (isoString) => {
     if (!isoString) return "-";
@@ -217,10 +241,12 @@ function EmptyState() {
 
 function getStatusTextColor(status) {
     switch (status) {
-      case "active": return "text-blue-600";
-      case "accepted": return "text-green-600";
-      case "assigned": return "text-purple-600";
-      case "collected": return "text-emerald-600";
-      default: return "text-red-600";
+      case "pending": return "text-yellow-600";
+      case "active": return "text-yellow-600";
+      case "accepted": return "text-blue-600";
+      case "picked": return "text-indigo-600";
+      case "delivered": return "text-green-600";
+      case "collected": return "text-green-600";
+      default: return "text-gray-600";
     }
 }

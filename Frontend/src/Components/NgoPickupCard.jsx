@@ -49,18 +49,20 @@ export default function NgoPickupCard({ donation, onStatusChange }) {
            <p className="text-xs font-semibold text-gray-400 mb-2 uppercase tracking-wide">Update Status</p>
            <div className="grid grid-cols-2 gap-2">
              <ActionButton 
-                label="Pick Up" 
+                label="Picked" 
                 icon={<FaTruck />} 
-                onClick={() => onStatusChange(donation._id, "assigned")}
+                onClick={() => onStatusChange(donation._id, "picked")}
                 color="blue"
-                active={donation.status === 'assigned'} 
+                active={donation.status === 'picked'}
+                disabled={donation.status === 'picked' || donation.status === 'delivered'}
              />
              <ActionButton 
-                label="Collected" 
+                label="Delivered" 
                 icon={<FaCheck />} 
-                onClick={() => onStatusChange(donation._id, "collected")}
+                onClick={() => onStatusChange(donation._id, "delivered")}
                 color="green"
-                active={donation.status === 'collected'}
+                active={donation.status === 'delivered'}
+                disabled={donation.status !== 'picked'} 
              />
            </div>
            {donation.status !== 'collected' && (
@@ -86,7 +88,10 @@ function ActionButton({ label, icon, onClick, color, active }) {
    return (
       <button 
         onClick={onClick}
-        className={`flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg text-xs font-bold border transition-all ${colors[color]} ${active ? 'ring-2 ring-offset-1' : ''}`}
+        disabled={disabled}
+        className={`flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg text-xs font-bold border transition-all ${
+           disabled ? 'bg-gray-100 text-gray-400 cursor-not-allowed border-gray-200' : colors[color]
+        } ${active ? 'ring-2 ring-offset-1' : ''}`}
       >
         {icon} {label}
       </button>

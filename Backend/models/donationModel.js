@@ -37,8 +37,8 @@ const donationSchema = new mongoose.Schema(
 
     status: {
       type: String,
-      enum: ["active", "accepted", "assigned", "collected", "cancelled"],
-      default: "active",
+      enum: ["pending", "accepted", "picked", "delivered", "cancelled"],
+      default: "pending",
     },
 
     //NGO that accepted this donation

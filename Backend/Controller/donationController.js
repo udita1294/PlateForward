@@ -18,6 +18,9 @@ export const createDonation = async (req, res) => {
       cloudinaryId: req.file?.filename || null
     });
     
+    // access io instance
+    const io = req.app.get('io');
+    io.emit('new_donation', newDonation);
 
     res.status(201).json({ success: true, donation: newDonation });
   } catch (err) {

@@ -3,10 +3,10 @@ export default function NgoStatusBadge({ status }) {
 
   const base = "px-3 py-1 rounded-full text-xs font-semibold";
   const styles = {
-    active: "bg-yellow-100 text-yellow-700",
+    pending: "bg-yellow-100 text-yellow-700",
     accepted: "bg-blue-100 text-blue-700",
-    assigned: "bg-indigo-100 text-indigo-700",
-    collected: "bg-green-100 text-green-700",
+    picked: "bg-indigo-100 text-indigo-700",
+    delivered: "bg-green-100 text-green-700",
     cancelled: "bg-red-100 text-red-700",
   };
 

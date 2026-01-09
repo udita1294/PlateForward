@@ -4,6 +4,7 @@ import { StoreContext } from "../Context/StoreContext";
 import NgoDonationCard from "../Components/NgoDonationCard";
 import NgoPickupCard from "../Components/NgoPickupCard";
 import { FaBoxOpen, FaTruck, FaHandHoldingHeart, FaSpinner } from "react-icons/fa";
+import { toast } from "react-toastify";
 
 export default function NgoDashboard() {
   const { url, token } = useContext(StoreContext);
@@ -13,13 +14,47 @@ export default function NgoDashboard() {
   const [loading, setLoading] = useState(false);
   const [acceptingId, setAcceptingId] = useState(null);
   const [error, setError] = useState("");
-  const [activeTab, setActiveTab] = useState("available"); // "available" | "myPickups"
+  const [activeTab, setActiveTab] = useState("available"); 
 
   useEffect(() => {
     if (!token) return;
     fetchData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [token]);
+
+  // Socket Listener
+  const { socket } = useContext(StoreContext);
+  useEffect(() => {
+    if(!socket) return;
+    
+    
+    socket.on('new_donation', (newDonation) => {
+        setAvailableDonations(prev => [newDonation, ...prev]);
+    });
+
+    socket.on('donation_updated', (updatedDonation) => {
+        setAvailableDonations(prev => {
+             // If status is not pending, remove it
+             if(updatedDonation.status !== 'pending') {
+                 return prev.filter(d => d._id !== updatedDonation._id);
+             }
+             // existing item update
+             return prev.map(d => d._id === updatedDonation._id ? updatedDonation : d);
+        });
+        
+        setMyPickups(prev => {
+             const exists = prev.find(d => d._id === updatedDonation._id);
+             if(exists) {
+                 return prev.map(d => d._id === updatedDonation._id ? updatedDonation : d);
+             }
+             return prev;
+        });
+    });
+
+    return () => {
+        socket.off('new_donation');
+        socket.off('donation_updated');
+    }
+  }, [socket]);
 
   const fetchData = async () => {
     try {

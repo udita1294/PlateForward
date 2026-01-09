@@ -1,24 +1,64 @@
 import { createContext, useEffect, useState } from "react";
 import axios from "axios";
+import { io } from "socket.io-client";
 
 export const StoreContext = createContext(null);
 
 const StoreContextProvider = (props) => {
-  const url = "https://plateforward.onrender.com";
-
+  const url = "https://plateforward.onrender.com"; 
+  const backendUrl = "http://localhost:3000"; 
   const [token, setToken] = useState(localStorage.getItem("token") || "");
+  const [socket, setSocket] = useState(null);
+  const [userId, setUserId] = useState(null);
+  const [userRole, setUserRole] = useState(null);
 
   useEffect(() => {
     if (token) {
       localStorage.setItem("token", token);
+      
+      // Decode token to get user info
+      try {
+        const payload = JSON.parse(atob(token.split('.')[1]));
+        setUserId(payload.id);
+        setUserRole(payload.role);
+        
+        // Initialize Socket
+        // Use backendUrl if running locally, otherwise url (deployed)
+        
+        const socketConnection = io("http://localhost:3000" || "https://plateforward.onrender.com"); 
+        setSocket(socketConnection);
+
+        socketConnection.on("connect", () => {
+            console.log("Socket connected:", socketConnection.id);
+            socketConnection.emit("join_room", payload.id);
+        });
+
+        return () => {
+            socketConnection.disconnect();
+        }
+
+      } catch (error) {
+        console.error("Error decoding token or connecting socket:", error);
+      }
+
+    } else {
+        if(socket) {
+            socket.disconnect();
+            setSocket(null);
+        }
+        setUserId(null);
+        setUserRole(null);
     }
   }, [token]);
 
   
   const contextValue = {
-    url,
+    url: "http://localhost:3000" || "https://plateforward.onrender.com", 
     token,
     setToken,
+    socket,
+    userId,
+    userRole
   };
 
   return (
