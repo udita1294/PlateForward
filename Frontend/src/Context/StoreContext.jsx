@@ -5,7 +5,7 @@ import { io } from "socket.io-client";
 export const StoreContext = createContext(null);
 
 const StoreContextProvider = (props) => {
-  const url = import.meta.env.VITE_API_URL || "https://plate-forward-one.vercel.app";
+  const url = "http://localhost:3000" || "https://plate-forward-one.vercel.app";
   const [token, setToken] = useState(localStorage.getItem("token") || "");
   const [socket, setSocket] = useState(null);
   const [userId, setUserId] = useState(null);
