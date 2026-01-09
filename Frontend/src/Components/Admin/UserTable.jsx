@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { toast } from 'react-toastify';
 import axios from 'axios';
+import { StoreContext } from '../../Context/StoreContext';
 
 const UserTable = ({ users, fetchUsers, token }) => {
+  const { url } = useContext(StoreContext);
   const handleDelete = async (id) => {
     if (!window.confirm("Are you sure you want to delete this user? This action cannot be undone.")) return;
     
     try {
-      await axios.delete(`http://localhost:3000/api/admin/users/${id}`|| `https://plateforward-backend.onrender.com/api/admin/users/${id}`, {
+      await axios.delete(`${url}/api/admin/users/${id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       toast.success("User deleted successfully");

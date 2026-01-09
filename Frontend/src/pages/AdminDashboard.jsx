@@ -9,7 +9,7 @@ import UserTable from '../Components/Admin/UserTable';
 import DonationTable from '../Components/Admin/DonationTable';
 
 const AdminDashboard = () => {
-  const { token, userRole } = useContext(StoreContext);
+  const { token, userRole, url } = useContext(StoreContext);
   const navigate = useNavigate();
   
   const [stats, setStats] = useState(null);
@@ -28,7 +28,7 @@ const AdminDashboard = () => {
 
   const fetchStats = async () => {
     try {
-      const res = await axios.get('http://localhost:3000/api/admin/stats' || 'https://plateforward-backend.onrender.com/api/admin/stats', {
+      const res = await axios.get(`${url}/api/admin/stats`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       if (res.data.success) {
@@ -41,7 +41,7 @@ const AdminDashboard = () => {
 
   const fetchUsers = async () => {
     try {
-      const res = await axios.get('http://localhost:3000/api/admin/users' || 'https://plateforward-backend.onrender.com/api/admin/users', {
+      const res = await axios.get(`${url}/api/admin/users`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       if (res.data.success) {
@@ -54,7 +54,7 @@ const AdminDashboard = () => {
 
   const fetchDonations = async () => {
     try {
-      const res = await axios.get('http://localhost:3000/api/admin/donations' || 'https://plateforward-backend.onrender.com/api/admin/donations', {
+      const res = await axios.get(`${url}/api/admin/donations`, {
          headers: { Authorization: `Bearer ${token}` }
       });
       if (res.data.success) {

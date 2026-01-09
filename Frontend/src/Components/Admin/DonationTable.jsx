@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { toast } from 'react-toastify';
 import axios from 'axios';
+import { StoreContext } from '../../Context/StoreContext';
 
 const DonationTable = ({ donations, fetchDonations, token }) => {
+  const { url } = useContext(StoreContext);
   const handleDelete = async (id) => {
     if (!window.confirm("Are you sure you want to delete this donation?")) return;
     
     try {
-      await axios.delete(`http://localhost:3000/api/admin/donations/${id}`|| `https://plateforward-backend.onrender.com/api/admin/donations/${id}`, {
+      await axios.delete(`${url}/api/admin/donations/${id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       toast.success("Donation deleted successfully");

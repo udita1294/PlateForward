@@ -5,8 +5,7 @@ import { io } from "socket.io-client";
 export const StoreContext = createContext(null);
 
 const StoreContextProvider = (props) => {
-  const url = "https://plateforward.onrender.com"; 
-  const backendUrl = "http://localhost:3000"; 
+  const url = import.meta.env.VITE_API_URL || "https://plateforward.onrender.com";
   const [token, setToken] = useState(localStorage.getItem("token") || "");
   const [socket, setSocket] = useState(null);
   const [userId, setUserId] = useState(null);
@@ -23,9 +22,7 @@ const StoreContextProvider = (props) => {
         setUserRole(payload.role);
         
         // Initialize Socket
-        // Use backendUrl if running locally, otherwise url (deployed)
-        
-        const socketConnection = io("http://localhost:3000" || "https://plateforward.onrender.com"); 
+        const socketConnection = io(url); 
         setSocket(socketConnection);
 
         socketConnection.on("connect", () => {
@@ -49,11 +46,11 @@ const StoreContextProvider = (props) => {
         setUserId(null);
         setUserRole(null);
     }
-  }, [token]);
+  }, [token, url]);
 
   
   const contextValue = {
-    url: "http://localhost:3000" || "https://plateforward.onrender.com", 
+    url,
     token,
     setToken,
     socket,
