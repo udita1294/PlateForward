@@ -1,106 +1,93 @@
-# **⭐PlateForward — Surplus Food Donation Network**
+# 🍽️ PlateForward — Smart Surplus Food Donation Platform
 
-PlateForward is a MERN-stack platform designed to reduce surplus food waste by connecting donors, receivers, and volunteers. Users can post donations, request food, and assist in deliveries to ensure excess food reaches people in need.
+PlateForward is a full-stack **MERN** application that connects **food donors, receivers, volunteers, and administrators** to efficiently redistribute surplus food.  
+The platform uses **location-based tracking, real-time notifications, and an admin analytics dashboard** to minimize food waste and maximize social impact.
 
-## **🚀 Overview**
+ Live Link : https://plate-forward-one.vercel.app
 
-PlateForward provides a modern, digital workflow for surplus food redistribution:
+---
 
-Donor → Creates and manages donation posts
+## 🌟 Features
 
-Receiver → Views and requests available donations
+### 🔐 Authentication & Authorization
+- Secure JWT-based authentication
+- Role-based access control (Donor, Receiver, Volunteer, Admin)
 
-Volunteer → Helps with pickup and delivery
+---
 
-<img width="1877" height="906" alt="image" src="https://github.com/user-attachments/assets/1df4e002-a148-48bc-a7e6-914c2150a67a" />
-<<img width="1870" height="904" alt="image" src="https://github.com/user-attachments/assets/ea871681-c31c-4341-b77a-b7f774ac32e3" />
-<img width="1879" height="895" alt="image" src="https://github.com/user-attachments/assets/81cdbcbb-fddc-4fc3-a069-3178eb78dd78" />
-<img width="1863" height="908" alt="image" src="https://github.com/user-attachments/assets/6da07a32-2cff-488d-8824-c4e3dccd0817" />
-<img width="1884" height="909" alt="image" src="https://github.com/user-attachments/assets/c75c545f-5dcf-4cc9-b7a0-212df9a77a3e" />
+### 🍱 Donation Management
+- Create, view, and manage food donations
+- Upload food images using Multer + Cloudinary
+- Donation status lifecycle:
+  - Pending → Accepted → Completed → Reported
+- Quantity, food type, pickup date & time support
+
+---
+
+### 📍 Location-Based Tracking
+- Store donation pickup location (address, latitude, longitude)
+- Donor location displayed on interactive maps
+- Accurate location data improves volunteer routing
+
+---
+
+### 🗺️ Map Integration
+- Integrated **Leaflet / Google Maps**
+- View donation locations visually
+- Volunteers can get **turn-by-turn directions** via Google Maps
+
+---
+
+### 🔔 Real-Time Notifications
+- Implemented using **Socket.IO**
+- Instant alerts when:
+  - Donation is accepted
+  - Volunteer is assigned
+  - Status updates occur
+- Improves coordination and response time
+
+---
+
+### 📊 Admin Dashboard
+- View total donations and platform statistics
+- Monitor completed, pending, and reported donations
+- Manage users (view roles & activity)
+- Delete or report inappropriate donations
+
+---
+
+### 📱 Responsive UI
+- Fully mobile-responsive design
+- Optimized for desktop, tablet, and mobile screens
+- Clean and consistent UI layout
+
+---
+
+## 🧰 Tech Stack
+
+### Frontend
+- React
+- React Router
+- Context API
+- Axios
+- Leaflet / Google Maps
+- Chart.js
+- Tailwind CSS / Custom CSS
+
+### Backend
+- Node.js
+- Express.js
+- MongoDB & Mongoose
+- JWT Authentication
+- Socket.IO
+- Multer & Cloudinary
+
+<img width="1886" height="908" alt="image" src="https://github.com/user-attachments/assets/52f63cbe-cd14-4baa-a865-600892b50f3c" />
+<img width="1870" height="907" alt="image" src="https://github.com/user-attachments/assets/ff89cd07-8f75-41df-989e-cb46638ba0ea" />
+<img width="1893" height="885" alt="image" src="https://github.com/user-attachments/assets/5964bfa6-4e38-4f2e-b1fc-70f12c356df3" />
+<img width="1800" height="898" alt="image" src="https://github.com/user-attachments/assets/aa85120d-16de-473f-9f3a-1851a06a0949" />
 
 
-
-
-## **🧩 Features**
-
-### **👤 User Roles**
-
-Donor dashboard
-
-Receiver dashboard
-
-Volunteer workflow
-
-Admin panel (future)
-
-### **🍲 Donation Module**
-
-Create donation posts
-
-Upload images using Multer + Cloudinary
-
-Track donation status (Available → Claimed → Completed)
-
-View donation history
-
-### **🔐 Authentication**
-
-JWT-based authentication
-
-Secure login & signup
-
-Role-based access control
-
-Password encryption
-
-## **🎨 Frontend**
-
-React with Context API
-
-Axios for API integration
-
-Responsive UI design
-
-## **🛠 Backend**
-
-Node.js + Express
-
-MongoDB + Mongoose
-
-Multer + Cloudinary file uploads
-
-## **🛠️ Tech Stack**
-# **🎯 Frontend**
-
-React
-
-React Router
-
-Context API
-
-TailwindCSS / Custom CSS
-
-Axios
-
-# **⚙️ Backend**
-
-Node.js
-
-Express
-
-MongoDB + Mongoose
-
-JWT Auth
-
-Multer + Cloudinary
-
-## **🧰 Tools**
-
-Vercel (Frontend hosting)
-
-Render  (Backend hosting)
-
-Cloudinary (Image storage)
 
 
 
