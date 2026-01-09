@@ -3,7 +3,7 @@
 PlateForward is a full-stack **MERN** application that connects **food donors, receivers, volunteers, and administrators** to efficiently redistribute surplus food.  
 The platform uses **location-based tracking, real-time notifications, and an admin analytics dashboard** to minimize food waste and maximize social impact.
 
-## Live Link : https://plate-forward-one.vercel.app/
+ Live Link : https://plate-forward-one.vercel.app
 
 ---
 
@@ -81,6 +81,14 @@ The platform uses **location-based tracking, real-time notifications, and an adm
 - JWT Authentication
 - Socket.IO
 - Multer & Cloudinary
+
+<img width="1886" height="908" alt="image" src="https://github.com/user-attachments/assets/52f63cbe-cd14-4baa-a865-600892b50f3c" />
+<img width="1870" height="907" alt="image" src="https://github.com/user-attachments/assets/ff89cd07-8f75-41df-989e-cb46638ba0ea" />
+<img width="1893" height="885" alt="image" src="https://github.com/user-attachments/assets/5964bfa6-4e38-4f2e-b1fc-70f12c356df3" />
+<img width="1800" height="898" alt="image" src="https://github.com/user-attachments/assets/aa85120d-16de-473f-9f3a-1851a06a0949" />
+
+
+
 
 
 
