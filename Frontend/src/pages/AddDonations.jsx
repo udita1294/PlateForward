@@ -1,21 +1,9 @@
 import { useState, useContext } from "react";
 import axios from "axios";
 import { StoreContext } from "../Context/StoreContext";
-import { 
-  FaUtensils, 
-  FaFileAlt, 
-  FaList, 
-  FaSortNumericUp, 
-  FaMapMarkerAlt, 
-  FaCity, 
-  FaGlobeAmericas, 
-  FaMapPin, 
-  FaCalendarAlt, 
-  FaCloudUploadAlt,
-  FaCheckCircle,
-  FaArrowLeft
-} from "react-icons/fa";
+import { FaUtensils, FaFileAlt, FaList, FaSortNumericUp, FaMapMarkerAlt, FaCity, FaGlobeAmericas, FaMapPin, FaCalendarAlt, FaCloudUploadAlt, FaCheckCircle, FaArrowLeft} from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
+import LocationPicker from "../Components/Maps/LocationPicker";
 
 export default function AddDonations() {
   const { url, token } = useContext(StoreContext);
@@ -30,7 +18,9 @@ export default function AddDonations() {
     city: "",
     state: "",
     pin: "",
+
     pickupDateTime: "",
+    location: null,
   });
 
   const [image, setImage] = useState(null);
@@ -64,6 +54,9 @@ export default function AddDonations() {
       };
 
       formData.append("pickupAddress", JSON.stringify(pickupAddress));
+      if (form.location) {
+        formData.append("location", JSON.stringify(form.location));
+      }
       formData.append("pickupDateTime", new Date(form.pickupDateTime).toISOString());
 
       if (image) {
@@ -165,7 +158,6 @@ export default function AddDonations() {
                 </div>
               </div>
 
-              {/* Right Column: Location & Time */}
               <div className="space-y-6">
                 <h3 className="text-lg font-semibold text-gray-700 border-b pb-2 mb-4">Pickup Info</h3>
 
@@ -209,6 +201,12 @@ export default function AddDonations() {
                     value={form.pickupDateTime}
                     onChange={(e) => setForm({ ...form, pickupDateTime: e.target.value })}
                   />
+                </div>
+
+                {/* Location Picker */}
+                <div>
+                   <label className="block text-sm font-medium text-gray-700 mb-2">Pin Current Location</label>
+                   <LocationPicker onLocationSelect={(loc) => setForm({...form, location: loc})} />
                 </div>
 
                 {/* Image Upload */}

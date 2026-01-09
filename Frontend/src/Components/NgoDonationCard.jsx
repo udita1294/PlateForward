@@ -1,8 +1,30 @@
+import React, { useState } from 'react';
 import NgoStatusBadge from "./NgoStatusBadge";
-import { FaUtensils, FaWeightHanging, FaMapMarkerAlt, FaClock, FaBoxOpen } from "react-icons/fa";
+import { FaUtensils, FaWeightHanging, FaMapMarkerAlt, FaClock, FaBoxOpen, FaMap } from "react-icons/fa";
+import DonationMap from "./Maps/DonationMap";
+
+const Modal = ({ isOpen, onClose, children, title }) => {
+  if (!isOpen) return null;
+  return (
+    <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
+      <div className="bg-white rounded-xl shadow-2xl w-full max-w-lg overflow-hidden animate-in fade-in zoom-in duration-200">
+         <div className="flex justify-between items-center p-4 border-b">
+            <h3 className="font-bold text-gray-800">{title}</h3>
+            <button onClick={onClose} className="text-gray-400 hover:text-gray-600 text-xl">&times;</button>
+         </div>
+         <div className="p-4">
+            {children}
+         </div>
+      </div>
+    </div>
+  );
+};
 
 export default function NgoDonationCard({ donation, onAccept, isAccepting }) {
+  const [showMap, setShowMap] = useState(false);
+
   return (
+    <>
     <div className="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow border border-gray-100 overflow-hidden flex flex-col h-full">
       {/* Image Header */}
       <div className="h-48 w-full bg-gray-100 relative overflow-hidden group">
@@ -43,9 +65,19 @@ export default function NgoDonationCard({ donation, onAccept, isAccepting }) {
            </div>
 
            {donation.pickupAddress && (
-             <div className="flex items-start gap-2 text-sm text-gray-700">
-                <FaMapMarkerAlt className="text-red-500 text-xs mt-1" />
-                <span className="truncate">{donation.pickupAddress.city}, {donation.pickupAddress.street}</span>
+             <div className="flex flex-col gap-1">
+                 <div className="flex items-start gap-2 text-sm text-gray-700">
+                    <FaMapMarkerAlt className="text-red-500 text-xs mt-1" />
+                    <span className="truncate">{donation.pickupAddress.city}, {donation.pickupAddress.street}</span>
+                 </div>
+                 {donation.location && (
+                    <button 
+                        onClick={() => setShowMap(true)}
+                        className="text-xs text-blue-600 hover:text-blue-800 flex items-center gap-1 ml-5 underline"
+                    >
+                        <FaMap /> View on Map
+                    </button>
+                 )}
              </div>
            )}
 
@@ -72,5 +104,14 @@ export default function NgoDonationCard({ donation, onAccept, isAccepting }) {
         </div>
       </div>
     </div>
+    
+    <Modal isOpen={showMap} onClose={() => setShowMap(false)} title="Pickup Location">
+        {donation.location ? (
+             <DonationMap lat={donation.location.lat} lng={donation.location.lng} popupText={donation.title} />
+        ) : (
+            <div className="text-center p-4">Location data not available</div>
+        )}
+    </Modal>
+    </>
   );
 }

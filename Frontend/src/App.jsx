@@ -6,6 +6,7 @@ import Login from "./pages/Login.jsx";
 import AddDonations from "./pages/AddDonations.jsx";
 import DonorDashboard from "./pages/DonorDashboard.jsx";
 import NgoDashboard from "./pages/NgoDashboard.jsx";
+import AdminDashboard from "./pages/AdminDashboard.jsx";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { StoreContext } from "./Context/StoreContext.jsx";
@@ -74,6 +75,7 @@ const App = () => {
       <Route path="/add-donation" element={<AddDonations />} />
       <Route path="/my-donations" element={<DonorDashboard />} />
       <Route path="/ngo-dashboard" element={<NgoDashboard />} />
+      <Route path="/admin" element={<AdminDashboard />} />
 
 
      </Routes>

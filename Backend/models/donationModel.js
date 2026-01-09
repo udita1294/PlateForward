@@ -33,6 +33,10 @@ const donationSchema = new mongoose.Schema(
       state: { type: String, required: true },
       pin: { type: String, required: true },
     },
+    location: {
+      lat: { type: Number },
+      lng: { type: Number },
+    },
     pickupDateTime: { type: Date, required: true },
 
     status: {

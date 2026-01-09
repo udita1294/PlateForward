@@ -1,8 +1,30 @@
+import React, { useState } from 'react';
 import NgoStatusBadge from "./NgoStatusBadge";
-import { FaUtensils, FaWeightHanging, FaMapMarkerAlt, FaClock, FaBoxOpen, FaCheck, FaTruck, FaTimes, FaUserCheck } from "react-icons/fa";
+import { FaUtensils, FaWeightHanging, FaMapMarkerAlt, FaCheck, FaTruck, FaTimes, FaMap, FaBoxOpen } from "react-icons/fa";
+import DonationMap from "./Maps/DonationMap";
+
+const Modal = ({ isOpen, onClose, children, title }) => {
+  if (!isOpen) return null;
+  return (
+    <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
+      <div className="bg-white rounded-xl shadow-2xl w-full max-w-lg overflow-hidden animate-in fade-in zoom-in duration-200">
+         <div className="flex justify-between items-center p-4 border-b">
+            <h3 className="font-bold text-gray-800">{title}</h3>
+            <button onClick={onClose} className="text-gray-400 hover:text-gray-600 text-xl">&times;</button>
+         </div>
+         <div className="p-4">
+            {children}
+         </div>
+      </div>
+    </div>
+  );
+};
 
 export default function NgoPickupCard({ donation, onStatusChange }) {
+  const [showMap, setShowMap] = useState(false);
+
   return (
+    <>
     <div className="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow border border-gray-100 overflow-hidden flex flex-col h-full">
       {/* Image Header */}
       <div className="h-40 w-full bg-gray-100 relative overflow-hidden group">
@@ -36,11 +58,21 @@ export default function NgoPickupCard({ donation, onStatusChange }) {
                <span>Quantity:</span>
                <span className="font-medium text-gray-800">{donation.quantity}</span>
             </div>
-             <div className="flex justify-between">
+             <div className="flex justify-between items-start">
                <span>Pickup:</span>
-               <span className="font-medium text-gray-800 text-right truncate max-w-[150px]">
-                 {donation.pickupAddress?.city || 'N/A'}
-               </span>
+               <div className="text-right max-w-[150px]">
+                 <div className="font-medium text-gray-800 truncate">
+                     {donation.pickupAddress?.city || 'N/A'}
+                 </div>
+                  {donation.location && (
+                    <button 
+                        onClick={() => setShowMap(true)}
+                        className="text-xs text-blue-600 hover:text-blue-800 flex items-center justify-end gap-1 w-full underline mt-0.5"
+                    >
+                        <FaMap /> Map
+                    </button>
+                 )}
+               </div>
             </div>
         </div>
         
@@ -65,7 +97,7 @@ export default function NgoPickupCard({ donation, onStatusChange }) {
                 disabled={donation.status !== 'picked'} 
              />
            </div>
-           {donation.status !== 'collected' && (
+           {donation.status !== 'collected' && donation.status !== 'delivered' && (
               <button 
                 onClick={() => onStatusChange(donation._id, "cancelled")}
                 className="w-full mt-2 text-xs text-red-500 hover:text-red-700 py-1 font-medium flex items-center justify-center gap-1"
@@ -76,10 +108,19 @@ export default function NgoPickupCard({ donation, onStatusChange }) {
         </div>
       </div>
     </div>
+
+    <Modal isOpen={showMap} onClose={() => setShowMap(false)} title="Pickup Location & Directions">
+        {donation.location ? (
+             <DonationMap lat={donation.location.lat} lng={donation.location.lng} popupText={donation.title} />
+        ) : (
+             <div className="text-center p-4">Location data not available</div>
+        )}
+    </Modal>
+    </>
   );
 }
 
-function ActionButton({ label, icon, onClick, color, active }) {
+function ActionButton({ label, icon, onClick, color, active, disabled }) {
    const colors = {
      blue: "bg-blue-50 text-blue-600 hover:bg-blue-100 border-blue-200",
      green: "bg-green-50 text-green-600 hover:bg-green-100 border-green-200",

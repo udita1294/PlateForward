@@ -6,6 +6,7 @@ import userRoutes from "./Routes/UserRoute.js";
 import donationRoutes from "./Routes/donationRoutes.js";
 import ngoRoutes from "./Routes/ngoRoutes.js";
 
+import adminRoutes from "./Routes/adminRoutes.js";
 
 import { createServer } from "http"; // Import createServer
 import { Server } from "socket.io"; // Import Server from socket.io
@@ -49,6 +50,7 @@ await connectDB();
 app.use("/api/user", userRoutes);
 app.use("/api/donation", donationRoutes);
 app.use("/api/ngo", ngoRoutes);
+app.use("/api/admin", adminRoutes);
 
 const PORT = process.env.PORT || 3000;
 

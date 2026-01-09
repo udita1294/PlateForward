@@ -5,6 +5,7 @@ export const createDonation = async (req, res) => {
     const { title, description, foodType, quantity, pickupDateTime } = req.body;
 
     const pickupAddress = JSON.parse(req.body.pickupAddress);
+    const location = req.body.location ? JSON.parse(req.body.location) : undefined;
 
     const newDonation = await Donation.create({
       donorId: req.user.id,
@@ -13,6 +14,7 @@ export const createDonation = async (req, res) => {
       foodType,
       quantity: Number(quantity),
       pickupAddress,
+      location,
       pickupDateTime: new Date(pickupDateTime),
       imgUrl: req.file?.path || null,
       cloudinaryId: req.file?.filename || null

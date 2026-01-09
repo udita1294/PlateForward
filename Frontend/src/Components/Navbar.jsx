@@ -15,11 +15,6 @@ const Navbar = () => {
     setIsMenuOpen(false);
   };
 
-  // const navLinks = [
-  //   { name: "Browse Food", path: "/ngo-dashboard" }, 
-  //   { name: "How it Works", path: "#how-it-works" },
-  // ];
-
   return (
     <nav className="fixed w-full z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100 shadow-sm transition-all duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -38,11 +33,11 @@ const Navbar = () => {
             <Link to="/ngo-dashboard" className="text-gray-600 hover:text-green-600 font-medium transition-colors text-sm">
               Browse Food
             </Link>
-            <Link to="#how-it-works" className="text-gray-600 hover:text-green-600 font-medium transition-colors text-sm">
-              How it Works
-            </Link>
             <Link to="/my-donations" className="text-gray-600 hover:text-green-600 font-medium transition-colors text-sm">
               My Donations
+            </Link>
+            <Link to="/admin" className="text-gray-600 hover:text-green-600 font-medium transition-colors text-sm">
+              Admin Dashboard
             </Link>
 
             <div className="pl-4 border-l border-gray-200 ml-4 flex items-center space-x-3">
