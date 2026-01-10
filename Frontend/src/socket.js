@@ -1,6 +1,6 @@
 import { io } from "socket.io-client";
 
-const socket = io( "https://plateforward.onrender.com" || "http://localhost:3000"
+const socket = io( "https://plateforward.onrender.com"
 , {
   transports: ['websocket']
 });
