@@ -1,8 +1,8 @@
 import React, { useContext, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home.jsx";
-import Signup from "./pages/signup.jsx";
-import Login from "./pages/login.jsx";
+import Signup from "./pages/Signup.jsx";
+import Login from "./pages/Login.jsx";
 import AddDonations from "./pages/AddDonations.jsx";
 import DonorDashboard from "./pages/DonorDashboard.jsx";
 import NgoDashboard from "./pages/NgoDashboard.jsx";
