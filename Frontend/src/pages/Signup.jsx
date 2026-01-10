@@ -190,14 +190,10 @@ export default function Signup() {
                 </div>
               </div>
 
-              {/* Terms and Submit */}
+               {/* Terms and Submit */}
               <div className="mt-8 pt-6 border-t border-gray-100">
                 <label className="flex items-start gap-3 cursor-pointer mb-6 group">
-                   <input type="checkbox" required className="mt-1 w-4 h-4 text-green-600 rounded border-gray-300 focus:ring-green-500" />
-                   <span className="text-sm text-gray-500 group-hover:text-gray-700 transition-colors">
-                     By creating an account, I agree to the <a href="#" className="text-green-600 hover:underline">Terms of Service</a> and <a href="#" className="text-green-600 hover:underline">Privacy Policy</a>.
-                   </span>
-                </label>
+                </label> 
 
                 <button
                   type="submit"
