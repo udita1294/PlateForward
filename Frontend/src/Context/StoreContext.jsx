@@ -5,7 +5,8 @@ import { io } from "socket.io-client";
 export const StoreContext = createContext(null);
 
 const StoreContextProvider = (props) => {
-  const url = "http://localhost:3000" || "https://plateforward.onrender.com";
+  const url = import.meta.env.VITE_BACKEND_URL || "http://localhost:3000";
+
   const [token, setToken] = useState(localStorage.getItem("token") || "");
   const [socket, setSocket] = useState(null);
   const [userId, setUserId] = useState(null);
