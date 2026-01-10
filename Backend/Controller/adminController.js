@@ -12,13 +12,7 @@ export const getAdminStats = async (req, res) => {
 
     res.status(200).json({
       success: true,
-      stats: {
-        totalUsers,
-        totalDonations,
-        pendingDonations,
-        completedDonations,
-      },
-    });
+      stats: {totalUsers,totalDonations,pendingDonations,completedDonations} });
   } catch (error) {
     res.status(500).json({ message: "Server Error", error: error.message });
   }
@@ -50,10 +44,10 @@ export const deleteUser = async (req, res) => {
 export const getAllDonations = async (req, res) => {
   try {
     const donations = await Donation.find()
-      .populate("donorId", "name email")
-      .populate("acceptedByNgo", "name")
-      .populate("volunteerId", "name")
-      .sort({ createdAt: -1 });
+  .populate("donorId", "name email")
+    .populate("acceptedByNgo", "name")
+   .populate("volunteerId", "name")
+  .sort({ createdAt: -1 });
     res.status(200).json({ success: true, donations });
   } catch (error) {
     res.status(500).json({ message: "Server Error", error: error.message });
