@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.post("/analyze-food", async (req, res) => {
     try {
-        const response = await axios.post("http://127.0.0.1:8000/predict", req.body);
+        const response = await axios.post("https://plateforward-ml.onrender.com/predict", req.body);
         res.json({
             success: true,
             ml_result: response.data
