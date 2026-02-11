@@ -39,6 +39,8 @@ const StoreContextProvider = (props) => {
 
       } catch (error) {
         console.error("Error decoding token or connecting socket:", error);
+        localStorage.removeItem("token");
+        setToken("");
       }
 
     } else {

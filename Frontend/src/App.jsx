@@ -10,6 +10,7 @@ import AdminDashboard from "./pages/AdminDashboard.jsx";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { StoreContext } from "./Context/StoreContext.jsx";
+import ProtectedRoute from "./Components/ProtectedRoute.jsx";
 
 const App = () => {
 
@@ -72,10 +73,10 @@ const App = () => {
       <Route path="/" element={<Home />} />
       <Route path="/register" element={<Signup />} />
       <Route path="/login" element={<Login />} />
-      <Route path="/add-donation" element={<AddDonations />} />
-      <Route path="/my-donations" element={<DonorDashboard />} />
-      <Route path="/ngo-dashboard" element={<NgoDashboard />} />
-      <Route path="/admin" element={<AdminDashboard />} />
+      <Route path="/add-donation" element={<ProtectedRoute><AddDonations /></ProtectedRoute>} />
+      <Route path="/my-donations" element={<ProtectedRoute><DonorDashboard /></ProtectedRoute>} />
+      <Route path="/ngo-dashboard" element={<ProtectedRoute><NgoDashboard /></ProtectedRoute>} />
+      <Route path="/admin" element={<ProtectedRoute><AdminDashboard /></ProtectedRoute>} />
 
 
      </Routes>
