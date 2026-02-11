@@ -76,23 +76,20 @@ const Navbar = () => {
       {isMenuOpen && (
         <div className="md:hidden bg-white border-t border-gray-100 absolute w-full left-0 shadow-lg">
           <div className="px-4 pt-2 pb-6 space-y-1">
-            {navLinks.map((link) => (
-              <a
+            {[
+              { name: 'Browse Food', path: '/ngo-dashboard' },
+              { name: 'My Donations', path: '/my-donations' },
+              { name: 'Admin Dashboard', path: '/admin' }
+            ].map((link) => (
+              <Link
                 key={link.name}
-                href={link.path}
+                to={link.path}
                 className="block px-3 py-3 text-base font-medium text-gray-600 hover:text-green-600 hover:bg-green-50 rounded-lg transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {link.name}
-              </a>
+              </Link>
             ))}
-             <Link 
-              to="/my-donations" 
-              className="block px-3 py-3 text-base font-medium text-gray-600 hover:text-green-600 hover:bg-green-50 rounded-lg transition-colors"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              My Donations
-            </Link>
             
             <div className="pt-4 mt-2 border-t border-gray-100">
               {!token ? (
